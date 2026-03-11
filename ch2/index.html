@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>건강체력측정평가 — 2단원 복습 정리노트</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary:     #1d4e7a;
+      --primary-lt:  #e6f0f9;
+      --primary-md:  #b3cde3;
+      --accent:      #b5341e;
+      --accent-lt:   #fdf0ee;
+      --green:       #1b6e4a;
+      --green-lt:    #e8f5ef;
+      --amber:       #946e00;
+      --amber-lt:    #fdf6de;
+      --purple:      #5a3e8f;
+      --purple-lt:   #f0ecfb;
+      --gray-dark:   #1e1e1e;
+      --gray-mid:    #4a4a4a;
+      --gray-light:  #f5f6f8;
+      --border:      #d6dce5;
+      --text:        #1e1e1e;
+      --radius:      8px;
+      --shadow:      0 2px 10px rgba(0,0,0,.07);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', 'Pretendard', sans-serif;
+      font-size: 15px;
+      line-height: 1.85;
+      color: var(--text);
+      background: #eef1f5;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--primary);
+      box-shadow: 0 2px 8px rgba(0,0,0,.25);
+    }
+    .nav-inner {
+      max-width: 960px; margin: 0 auto;
+      padding: 0 1rem;
+      display: flex; align-items: center; flex-wrap: wrap;
+    }
+    .nav-brand {
+      color: #fff; font-weight: 700; font-size: 12.5px;
+      padding: .6rem 1rem .6rem 0;
+      margin-right: .5rem;
+      border-right: 1px solid rgba(255,255,255,.3);
+      white-space: nowrap;
+    }
+    nav a {
+      color: rgba(255,255,255,.82); text-decoration: none;
+      font-size: 12px; padding: .6rem .6rem;
+      transition: background .15s; white-space: nowrap;
+    }
+    nav a:hover { background: rgba(255,255,255,.15); color: #fff; }
+
+    /* WRAPPER */
+    .wrapper {
+      max-width: 960px; margin: 0 auto;
+      padding: 2rem 1.25rem 4rem;
+    }
+
+    /* HEADER */
+    header {
+      background: linear-gradient(135deg, #0f2d47 0%, #1d4e7a 55%, #2e6ea6 100%);
+      color: #fff;
+      padding: 2.8rem 2.2rem 2.2rem;
+      border-radius: var(--radius);
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 18px rgba(0,0,0,.15);
+    }
+    .header-tag {
+      display: inline-block;
+      background: rgba(255,255,255,.15);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 20px;
+      font-size: 11.5px; letter-spacing: .06em;
+      padding: .2rem .9rem; margin-bottom: 1rem;
+    }
+    header h1 {
+      font-size: clamp(1.5rem, 4vw, 2.1rem);
+      font-weight: 700; line-height: 1.3; margin-bottom: .3rem;
+    }
+    header .h-sub { font-size: 1rem; opacity: .75; margin-bottom: 1.1rem; }
+    header .h-meta { display: flex; flex-wrap: wrap; gap: .45rem; font-size: 12px; }
+    header .h-meta span {
+      background: rgba(255,255,255,.14);
+      border-radius: 4px; padding: .2rem .75rem;
+    }
+
+    /* SECTION */
+    .section { margin-bottom: 2.8rem; }
+    .section-title {
+      display: flex; align-items: center; gap: .6rem;
+      font-size: 1.15rem; font-weight: 700; color: var(--primary);
+      border-bottom: 2.5px solid var(--primary);
+      padding-bottom: .45rem; margin-bottom: 1.3rem;
+    }
+    .section-title .s-num {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 28px; height: 28px;
+      background: var(--primary); color: #fff;
+      border-radius: 6px; font-size: 13px; font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .subsec {
+      font-size: .96rem; font-weight: 700; color: var(--gray-dark);
+      margin: 1.5rem 0 .6rem;
+      padding-left: .8rem;
+      border-left: 4px solid var(--primary);
+    }
+    .subsec-sm {
+      font-size: .88rem; font-weight: 700; color: var(--primary);
+      margin: 1rem 0 .4rem;
+    }
+
+    /* CARD */
+    .card {
+      background: #fff; border-radius: var(--radius);
+      padding: 1.2rem 1.4rem;
+      box-shadow: var(--shadow); margin-bottom: 1rem;
+    }
+    p { margin-bottom: .4rem; }
+    p:last-child { margin-bottom: 0; }
+
+    /* KEYWORD */
+    .kw        { font-weight: 700; color: var(--primary); }
+    .kw-red    { font-weight: 700; color: var(--accent); }
+    .kw-green  { font-weight: 700; color: var(--green); }
+    .kw-amber  { font-weight: 700; color: var(--amber); }
+    .kw-purple { font-weight: 700; color: var(--purple); }
+
+    /* OBJECTIVE BOX */
+    .obj-box {
+      background: var(--primary-lt);
+      border: 1.5px solid var(--primary-md);
+      border-left: 5px solid var(--primary);
+      border-radius: var(--radius);
+      padding: 1.2rem 1.5rem;
+    }
+    .obj-box ol { padding-left: 1.4rem; }
+    .obj-box li { font-weight: 500; margin-bottom: .3rem; }
+
+    /* HIGHLIGHT BOXES */
+    .hl { border-radius: var(--radius); padding: 1.1rem 1.4rem; margin-bottom: 1rem; box-shadow: var(--shadow); }
+    .hl.blue   { background: var(--primary-lt); border-left: 5px solid var(--primary); }
+    .hl.red    { background: var(--accent-lt);  border-left: 5px solid var(--accent); }
+    .hl.green  { background: var(--green-lt);   border-left: 5px solid var(--green); }
+    .hl.amber  { background: var(--amber-lt);   border-left: 5px solid var(--amber); }
+    .hl.purple { background: var(--purple-lt);  border-left: 5px solid var(--purple); }
+    .hl-title { font-weight: 700; font-size: 13.5px; margin-bottom: .55rem; }
+    .hl.blue   .hl-title { color: var(--primary); }
+    .hl.red    .hl-title { color: var(--accent); }
+    .hl.green  .hl-title { color: var(--green); }
+    .hl.amber  .hl-title { color: var(--amber); }
+    .hl.purple .hl-title { color: var(--purple); }
+    .hl ul, .hl ol { padding-left: 1.3rem; }
+    .hl li { font-size: 13.5px; margin-bottom: .2rem; }
+
+    /* EXAMPLE BOX */
+    .ex {
+      background: #f8f9fb; border: 1px solid var(--border);
+      border-radius: 6px; padding: .7rem 1rem;
+      margin-top: .6rem; font-size: 13.5px;
+    }
+    .ex-label {
+      font-size: 11px; font-weight: 700; color: var(--primary);
+      letter-spacing: .05em; margin-bottom: .3rem;
+    }
+    .ex ul, .ex ol { padding-left: 1.2rem; }
+    .ex li { margin-bottom: .1rem; }
+
+    /* SCALE CARDS */
+    .scale-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem; margin-bottom: 1rem;
+    }
+    .scale-card {
+      border-radius: var(--radius);
+      padding: 1rem 1.1rem;
+      box-shadow: var(--shadow);
+    }
+    .scale-card.c1 { background: var(--primary-lt); border-top: 4px solid var(--primary); }
+    .scale-card.c2 { background: var(--accent-lt);  border-top: 4px solid var(--accent); }
+    .scale-card.c3 { background: var(--green-lt);   border-top: 4px solid var(--green); }
+    .scale-card.c4 { background: var(--amber-lt);   border-top: 4px solid var(--amber); }
+
+    .scale-card .sc-tag {
+      font-size: 10.5px; font-weight: 700; letter-spacing: .08em;
+      text-transform: uppercase; margin-bottom: .25rem;
+    }
+    .scale-card.c1 .sc-tag { color: var(--primary); }
+    .scale-card.c2 .sc-tag { color: var(--accent); }
+    .scale-card.c3 .sc-tag { color: var(--green); }
+    .scale-card.c4 .sc-tag { color: var(--amber); }
+    .scale-card .sc-title { font-size: 1rem; font-weight: 700; margin-bottom: .45rem; }
+    .scale-card p { font-size: 12.5px; color: var(--gray-mid); line-height: 1.65; }
+
+    /* VARIABLE TYPE GRID */
+    .var-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: .8rem;
+    }
+    .var-item {
+      background: #fff; border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: .9rem 1.1rem;
+      box-shadow: var(--shadow);
+      display: flex; gap: .7rem; align-items: flex-start;
+    }
+    .var-dot {
+      flex-shrink: 0; margin-top: .35rem;
+      width: 10px; height: 10px;
+      background: var(--primary); border-radius: 50%;
+    }
+    .var-item .v-title { font-weight: 700; font-size: 13.5px; margin-bottom: .15rem; }
+    .var-item .v-en    { font-size: 11.5px; color: var(--primary); margin-bottom: .2rem; }
+    .var-item .v-desc  { font-size: 12.5px; color: var(--gray-mid); line-height: 1.6; }
+
+    /* VALIDITY GRID */
+    .val-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1rem; margin-bottom: 1rem;
+    }
+    .val-card {
+      background: #fff; border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .val-card .val-head {
+      padding: .65rem 1rem;
+      font-size: 13.5px; font-weight: 700; color: #fff;
+    }
+    .val-card.vc1 .val-head { background: var(--primary); }
+    .val-card.vc2 .val-head { background: var(--green); }
+    .val-card.vc3 .val-head { background: var(--purple); }
+    .val-card .val-body { padding: .9rem 1rem; font-size: 13px; line-height: 1.7; color: var(--gray-mid); }
+
+    /* RELIABILITY METHODS */
+    .rel-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: .9rem; margin-bottom: 1rem;
+    }
+    .rel-item {
+      background: #fff; border-radius: var(--radius);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--primary);
+      padding: 1rem 1.1rem;
+      box-shadow: var(--shadow);
+    }
+    .rel-item .r-title { font-weight: 700; font-size: 14px; color: var(--primary); margin-bottom: .4rem; }
+    .rel-item .r-desc  { font-size: 12.5px; color: var(--gray-mid); line-height: 1.65; }
+
+    /* COMPARISON GRID (준거 vs 규준) */
+    .cmp-2col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .cmp-card {
+      border-radius: var(--radius);
+      padding: 1.2rem 1.3rem;
+      box-shadow: var(--shadow);
+    }
+    .cmp-card.left  { background: var(--primary-lt); border-top: 4px solid var(--primary); }
+    .cmp-card.right { background: var(--green-lt);   border-top: 4px solid var(--green); }
+    .cmp-card .cmp-title { font-weight: 700; font-size: 14.5px; margin-bottom: .5rem; }
+    .cmp-card.left  .cmp-title { color: var(--primary); }
+    .cmp-card.right .cmp-title { color: var(--green); }
+    .cmp-card ul { padding-left: 1.2rem; }
+    .cmp-card li { font-size: 13px; margin-bottom: .25rem; line-height: 1.6; }
+
+    /* TABLE */
+    .table-wrap { overflow-x: auto; margin-bottom: 1.2rem; border-radius: var(--radius); }
+    table {
+      width: 100%; border-collapse: collapse;
+      font-size: 13.5px; background: #fff;
+      box-shadow: var(--shadow);
+    }
+    thead th {
+      background: var(--primary); color: #fff;
+      font-weight: 700; padding: .75rem 1rem;
+      text-align: center; white-space: nowrap;
+    }
+    thead th:first-child { text-align: left; }
+    tbody td {
+      padding: .65rem 1rem;
+      border-bottom: 1px solid #eef0f3;
+      vertical-align: top; line-height: 1.65;
+    }
+    tbody tr:last-child td { border-bottom: none; }
+    tbody tr:nth-child(even) { background: #f8f9fb; }
+    td.label-cell { font-weight: 700; color: var(--primary); white-space: nowrap; }
+    td.center     { text-align: center; }
+    td.ok    { color: var(--green);  font-weight: 600; text-align: center; }
+    td.no    { color: var(--accent); font-weight: 600; text-align: center; }
+    td.check { color: var(--green);  font-weight: 700; text-align: center; font-size: 16px; }
+    td.cross { color: var(--accent); font-weight: 700; text-align: center; font-size: 16px; }
+
+    /* EXAM CARDS */
+    .exam-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: .85rem;
+    }
+    .exam-item {
+      background: #fff;
+      border: 1px solid #e0d4cf;
+      border-top: 3px solid var(--accent);
+      border-radius: var(--radius);
+      padding: 1rem 1.1rem;
+      box-shadow: var(--shadow);
+    }
+    .exam-item .e-q { font-size: 13px; font-weight: 700; color: var(--accent); margin-bottom: .4rem; }
+    .exam-item .e-a { font-size: 13px; color: var(--gray-dark); line-height: 1.65; }
+
+    /* CHECKLIST */
+    .checklist { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: .5rem; }
+    .checklist li {
+      display: flex; align-items: flex-start; gap: .6rem;
+      background: #fff; border: 1px solid var(--border);
+      border-radius: 6px; padding: .6rem .85rem;
+      font-size: 13.5px; box-shadow: var(--shadow);
+    }
+    .checklist input[type="checkbox"] {
+      margin-top: .22rem; accent-color: var(--primary);
+      width: 15px; height: 15px; flex-shrink: 0; cursor: pointer;
+    }
+
+    /* SUMMARY BOX */
+    .summary-box {
+      background: linear-gradient(135deg, #0f2d47 0%, #1d4e7a 100%);
+      color: #fff; border-radius: var(--radius);
+      padding: 1.8rem 2rem; box-shadow: var(--shadow);
+    }
+    .summary-box h3 {
+      font-size: 1.1rem; margin-bottom: 1rem;
+      border-bottom: 1px solid rgba(255,255,255,.25);
+      padding-bottom: .6rem;
+    }
+    .summary-box ul { padding-left: 1.2rem; display: flex; flex-direction: column; gap: .4rem; }
+    .summary-box li { font-size: 13.5px; line-height: 1.7; opacity: .93; }
+    .summary-box .sh { color: #ffe066; font-weight: 700; }
+
+    /* FORMULA BOX */
+    .formula {
+      background: #f0f4f9; border: 1.5px dashed var(--primary);
+      border-radius: var(--radius); padding: 1rem 1.3rem;
+      text-align: center; font-size: 14px;
+      margin: .7rem 0;
+    }
+    .formula .f-main { font-size: 1.1rem; font-weight: 700; color: var(--primary); }
+    .formula .f-sub  { font-size: 12.5px; color: var(--gray-mid); margin-top: .3rem; }
+
+    hr { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
+
+    /* PRINT */
+    @media print {
+      nav { display: none; }
+      body { background: #fff; font-size: 13px; }
+      .wrapper { padding: 0; max-width: 100%; }
+      header { background: #0f2d47 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .card, .scale-card, .val-card, .rel-item, .exam-item, .hl { box-shadow: none; }
+      .summary-box { background: #0f2d47 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      thead th { background: var(--primary) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+
+    @media (max-width: 600px) {
+      header { padding: 1.8rem 1.2rem 1.5rem; }
+      .wrapper { padding: 1rem .75rem 3rem; }
+      nav a { padding: .55rem .45rem; font-size: 11px; }
+      .cmp-2col { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <span class="nav-brand">건강체력측정평가 · 2단원</span>
+    <a href="#obj">학습목표</a>
+    <a href="#measurement">측정의 이해</a>
+    <a href="#variable">변인</a>
+    <a href="#scale">측정척도</a>
+    <a href="#norm">규준지향검사</a>
+    <a href="#validity">타당도</a>
+    <a href="#reliability">신뢰도</a>
+    <a href="#criterion">준거지향검사</a>
+    <a href="#compare">비교표</a>
+    <a href="#exam">시험포인트</a>
+    <a href="#checklist">체크리스트</a>
+    <a href="#summary">전체요약</a>
+  </div>
+</nav>
+
+<div class="wrapper">
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-tag">Exercise Prescription · 2단원</div>
+    <h1>측정변인과 검사의 질</h1>
+    <p class="h-sub">수업 복습 및 시험 대비 정리노트</p>
+    <div class="h-meta">
+      <span>학습 범위: PDF 16~30페이지</span>
+      <span>측정척도 · 타당도 · 신뢰도 · 규준/준거지향 검사</span>
+    </div>
+  </header>
+
+  <!-- 1. 학습목표 -->
+  <section class="section" id="obj">
+    <div class="section-title"><span class="s-num">1</span>학습목표</div>
+    <div class="obj-box">
+      <ol>
+        <li>측정변인의 <span class="kw">정의와 종류</span>(측정척도, 역할별 분류)를 이해한다.</li>
+        <li><span class="kw">규준지향 검사</span>의 타당도와 신뢰도를 이해한다.</li>
+        <li><span class="kw">준거지향 검사</span>의 타당도와 신뢰도를 이해한다.</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 2. 측정의 이해 -->
+  <section class="section" id="measurement">
+    <div class="section-title"><span class="s-num">2</span>측정의 이해</div>
+    <div class="card">
+      <p>측정이란 신체활동과 관련된 특징을 <span class="kw">질적·양적으로 분류</span>하여 비교할 수 있도록 <span class="kw">구체적인 정보를 제공하는 일련의 과정</span>이다.</p>
+      <p style="margin-top:.6rem;">의미 있는 측정치를 얻으려면 다음 세 가지를 반드시 이해해야 한다.</p>
+    </div>
+    <div class="hl blue">
+      <div class="hl-title">의미 있는 측정치를 위한 3가지 요건</div>
+      <ol>
+        <li><span class="kw">타당한 측정 변인의 정의</span> — 무엇을 측정할 것인지 명확히 한다.</li>
+        <li><span class="kw">변인의 종류</span> — 측정 대상 변인의 성격을 파악한다.</li>
+        <li><span class="kw">측정치 평가방법의 이해</span> — 어떻게 평가할 것인지 기준을 갖는다.</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 3. 변인 -->
+  <section class="section" id="variable">
+    <div class="section-title"><span class="s-num">3</span>변인 (Variable)</div>
+    <div class="card">
+      <p><span class="kw">변인</span>이란 <strong>측정하고자 하는 속성이나 능력</strong>으로, 다른 변인과 구분되는 독립적 개념이다.</p>
+    </div>
+
+    <div class="subsec">변인의 특징: 직접 측정 가능 여부에 따른 구분</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+      <div class="hl blue">
+        <div class="hl-title">직접 측정이 가능한 변인</div>
+        <ul><li>키, 몸무게</li><li>체지방률, 근력</li></ul>
+      </div>
+      <div class="hl amber">
+        <div class="hl-title">직접 측정이 어려운 추상적 변인</div>
+        <ul><li>인성, 태도</li><li>감정적 안정감, 경기능력</li></ul>
+      </div>
+    </div>
+
+    <div class="subsec">변인의 분류 — 역할과 기능에 의한 분류</div>
+    <div class="var-grid">
+      <div class="var-item">
+        <div class="var-dot"></div>
+        <div>
+          <div class="v-title">질적변인</div>
+          <div class="v-en">Qualitative Variable</div>
+          <div class="v-desc">숫자로 표현할 수 없는 범주형 속성<br><em>예: 성별, 학년, 질환 유형</em></div>
+        </div>
+      </div>
+      <div class="var-item">
+        <div class="var-dot"></div>
+        <div>
+          <div class="v-title">양적변인</div>
+          <div class="v-en">Quantitative Variable</div>
+          <div class="v-desc">수치로 표현 가능한 속성<br><em>예: 신장, 체중, 체력 점수</em></div>
+        </div>
+      </div>
+      <div class="var-item">
+        <div class="var-dot"></div>
+        <div>
+          <div class="v-title">독립변인</div>
+          <div class="v-en">Independent Variable</div>
+          <div class="v-desc">다른 변인에 영향을 주는 원인 변인</div>
+        </div>
+      </div>
+      <div class="var-item">
+        <div class="var-dot"></div>
+        <div>
+          <div class="v-title">종속변인</div>
+          <div class="v-en">Dependent Variable</div>
+          <div class="v-desc">독립변인의 영향을 받는 결과 변인</div>
+        </div>
+      </div>
+      <div class="var-item">
+        <div class="var-dot"></div>
+        <div>
+          <div class="v-title">기준변인</div>
+          <div class="v-en">Criterion Variable</div>
+          <div class="v-desc">비교·평가의 기준이 되는 변인<br><em>예: 연령, 에너지 소비량</em></div>
+        </div>
+      </div>
+      <div class="var-item">
+        <div class="var-dot"></div>
+        <div>
+          <div class="v-title">예측변인</div>
+          <div class="v-en">Predicted Variable</div>
+          <div class="v-desc">기준변인을 통해 예측하려는 변인<br><em>예: 체력연령, 신체활동량</em></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. 측정척도 -->
+  <section class="section" id="scale">
+    <div class="section-title"><span class="s-num">4</span>측정척도 (Measurement Scale)</div>
+    <div class="card">
+      <p>측정척도는 변인을 수량화하는 방식에 따라 4가지로 구분된다. 척도의 수준이 높아질수록 포함하는 수리적 성질이 많아지며, <span class="kw">비율척도</span>가 가장 높은 수준의 척도이다.</p>
+    </div>
+
+    <div class="scale-grid">
+      <!-- 명명척도 -->
+      <div class="scale-card c1">
+        <div class="sc-tag">① Nominal Scale</div>
+        <div class="sc-title">명명척도 (명목척도)</div>
+        <p>개인이나 대상을 <strong>식별·분류</strong>하기 위한 가장 기본적인 척도이다. 수치는 단순 구분 기호에 불과하므로 <strong>수리적 계산이 불가능</strong>하고 비연속적·질적이다.</p>
+        <div class="ex">
+          <div class="ex-label">유의사항</div>
+          <ul>
+            <li>한 집단 소속은 다른 집단에 소속될 수 없다.</li>
+            <li>모든 구성원이 반드시 어느 집단에 소속되어야 한다.</li>
+          </ul>
+        </div>
+        <div class="ex" style="margin-top:.5rem;">
+          <div class="ex-label">예시</div>
+          <ul>
+            <li>운동선수 등 번호</li>
+            <li>학생 출석번호</li>
+            <li>주민등록번호</li>
+            <li>성별</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 서열척도 -->
+      <div class="scale-card c2">
+        <div class="sc-tag">② Ordinal Scale</div>
+        <div class="sc-title">서열척도 (순위척도)</div>
+        <p>상대적 <strong>순위·우열</strong>을 나타내는 척도이다. 순서는 알 수 있지만 <strong>간격이 동일하지 않아</strong> 우열의 정도(차이의 크기)는 판단할 수 없고, 수리적 계산도 불가능하다.</p>
+        <div class="ex" style="margin-top:.5rem;">
+          <div class="ex-label">예시</div>
+          <ul>
+            <li>학급 신장 순서</li>
+            <li>성적 순위</li>
+            <li>체력 검사 등급</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 동간척도 -->
+      <div class="scale-card c3">
+        <div class="sc-tag">③ Interval Scale</div>
+        <div class="sc-title">동간척도 (등간척도)</div>
+        <p>측정치 사이의 <strong>간격이 동일한 동간성</strong>을 가진 척도이다. <strong>가감(+, −) 계산이 가능</strong>하지만, 절대영점이 없어 <strong>승제(×, ÷)는 불가능</strong>하다.</p>
+        <div class="ex" style="margin-top:.5rem;">
+          <div class="ex-label">예시</div>
+          <ul>
+            <li>온도 (0°C는 온도가 없는 것이 아님)</li>
+            <li>지능지수 (IQ)</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 비율척도 -->
+      <div class="scale-card c4">
+        <div class="sc-tag">④ Ratio Scale</div>
+        <div class="sc-title">비율척도</div>
+        <p>동간성과 함께 <strong>절대영점(Absolute Zero Point)</strong>을 갖는 최상위 척도이다. 절대영점이 있으므로 <strong>가감승제(+, −, ×, ÷) 모두 가능</strong>하다.</p>
+        <div class="ex" style="margin-top:.5rem;">
+          <div class="ex-label">예시</div>
+          <ul>
+            <li>길이, 무게, 시간</li>
+            <li>체중, 체지방량</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. 규준지향 검사 -->
+  <section class="section" id="norm">
+    <div class="section-title"><span class="s-num">5</span>규준지향 검사 (Norm-Referenced Test)</div>
+    <div class="card">
+      <p><span class="kw">규준지향 검사</span>란 획득한 자료를 기반으로 <strong>피검자 간, 집단 간의 상대적 비교</strong>를 통해 개인과 집단의 위치와 우열을 판단하는 검사이다. 절대적인 기준이 아닌 <strong>규준(norm)</strong>을 통해 상대적으로 평가한다.</p>
+    </div>
+    <div class="hl amber">
+      <div class="hl-title">검사의 질을 결정하는 3가지 요인</div>
+      <ol>
+        <li><span class="kw-amber">검사도구의 적절성</span> — 측정하려는 속성에 맞는 도구를 사용하는가</li>
+        <li><span class="kw-amber">검사 실시상의 일관성</span> — 조건과 절차가 매번 동일하게 유지되는가</li>
+        <li><span class="kw-amber">정확한 점수부여</span> — 채점이 객관적이고 정확하게 이루어지는가</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 6. 타당도 -->
+  <section class="section" id="validity">
+    <div class="section-title"><span class="s-num">6</span>규준지향검사의 타당도 (Validity)</div>
+    <div class="card">
+      <p><span class="kw">타당도</span>란 검사도구가 측정하고자 하는 <strong>속성이나 능력을 얼마나 정확하게 측정</strong>하는지를 나타내는 정도이다. "재려는 것을 정말로 재고 있는가?"가 핵심 질문이다.</p>
+    </div>
+
+    <div class="val-grid">
+      <!-- 내용관련 -->
+      <div class="val-card vc1">
+        <div class="val-head">① 내용관련 타당도 (Content Validity)</div>
+        <div class="val-body">
+          <p>학습한 내용을 검사할 때, <strong>검사가 학습 내용을 얼마나 잘 포함</strong>하는지에 관한 타당도이다.</p>
+          <p style="margin-top:.5rem;"><strong>= 표면타당도 = 논리타당도</strong></p>
+          <p style="margin-top:.5rem;">검사 내용이 학습 내용을 <strong>치우침 없이 균형 있게</strong> 반영해야 내용타당도가 높다고 볼 수 있다.</p>
+        </div>
+      </div>
+      <!-- 준거관련 -->
+      <div class="val-card vc2">
+        <div class="val-head">② 준거관련 타당도 (Criterion Validity)</div>
+        <div class="val-body">
+          <p><strong>직접적 준거(기준 검사)와의 비교</strong>를 통해 검사의 타당성을 추정한다.</p>
+          <p style="margin-top:.5rem;"><span class="kw-green">공인타당도</span>: 현재 측정값과 동시에 측정된 준거와의 상관관계</p>
+          <p style="margin-top:.4rem;"><span class="kw-green">예측타당도</span>: 검사 결과로 미래 수행 능력을 예측할 수 있는 정도</p>
+        </div>
+      </div>
+      <!-- 구인관련 -->
+      <div class="val-card vc3">
+        <div class="val-head">③ 구인관련 타당도 (Construct Validity)</div>
+        <div class="val-body">
+          <p><strong>직접 측정하기 어려운 잠재적 특성·요인</strong>을 측정할 수 있는 정도이다.</p>
+          <p style="margin-top:.5rem;">세부 검사가 아닌, <strong>전체 능력과 현상의 잠재된 요인</strong>을 측정하는 것이 핵심이다.</p>
+          <p style="margin-top:.5rem;"><em>예: 근심, 외향성, 감정적 안정감, 경기능력</em></p>
+          <p style="margin-top:.5rem;"><strong>검증방법:</strong> 요인분석, 다중회귀분석</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. 신뢰도 -->
+  <section class="section" id="reliability">
+    <div class="section-title"><span class="s-num">7</span>규준지향검사의 신뢰도 (Reliability)</div>
+    <div class="card">
+      <p>통계적 관점에서 신뢰도는 <strong>동일 피험자를 반복 측정할 때 검사 점수가 얼마나 일관성 있게 나타나는가</strong>를 나타내는 지수이다. 검사도구, 피험자, 검사 실시 과정에서 발생하는 <span class="kw">분산적 오차</span>의 정도를 의미한다.</p>
+      <p style="margin-top:.5rem;">신뢰도 추정은 <span class="kw">진·오차 점수 이론</span>에 근거한 상대적 신뢰도를 기반으로 한다.</p>
+    </div>
+
+    <div class="subsec">신뢰도 추정방법</div>
+    <div class="rel-grid">
+      <div class="rel-item">
+        <div class="r-title">검사-재검사법</div>
+        <div class="r-desc">동일한 검사를 동일한 피험자에게 <strong>두 번 실시</strong>하여 두 점수의 상관으로 신뢰도를 추정한다. 측정 대상의 안정성이 보장되고, 학습·연습 효과가 없으며, 검사 조건과 피험자 태도가 같다는 <strong>가정</strong>이 전제되어야 더욱 정확하다.</div>
+      </div>
+      <div class="rel-item">
+        <div class="r-title">동형법 (동형검사법)</div>
+        <div class="r-desc">내용과 형식이 같은 <strong>두 가지 형태의 검사</strong>를 실시하여 두 점수 간의 차이로 신뢰도를 추정하는 방법이다.</div>
+      </div>
+      <div class="rel-item">
+        <div class="r-title">반분법</div>
+        <div class="r-desc">피검자 전체에게 검사를 실시한 후 <strong>홀수·짝수 집단으로 분류</strong>하여 각 집단 자료의 상관계수를 산출하는 방법이다. 피검자 수가 홀수이면 적용하기 어렵다.</div>
+      </div>
+      <div class="rel-item">
+        <div class="r-title">Spearman-Brown 공식</div>
+        <div class="r-desc">피검자 수가 <strong>홀수여서 반분법 적용이 어려울 때</strong> 이를 보완하는 공식이다. 문제 수를 늘리는 경우에도 신뢰도를 예측하는 데 활용된다.</div>
+      </div>
+    </div>
+
+    <div class="hl blue" style="margin-top:.5rem;">
+      <div class="hl-title">Spearman-Brown 공식의 의미</div>
+      <p style="font-size:13.5px;">반분법의 한계(홀수 피검자)를 보완하기 위해 만들어진 공식으로, 검사 문항 수를 증가시킬 때 신뢰도가 어떻게 변하는지도 예측할 수 있다. 즉 <span class="kw">신뢰도를 높이기 위한 문제 수 증가 효과</span>를 수리적으로 추정하는 도구이다.</p>
+    </div>
+
+    <div class="subsec">절대적 신뢰도 (Absolute Reliability)</div>
+    <div class="card">
+      <p><span class="kw">절대적 신뢰도</span>란 각 개인을 측정했을 때 <strong>예상되는 개인 점수의 변화 정도</strong>를 말한다. 상대적 신뢰도(상관계수)와 달리, 개인 단위에서 점수가 얼마나 변동할 수 있는지를 나타낸다.</p>
+      <div class="ex">
+        <div class="ex-label">예시</div>
+        <p>1마일 달리기 검사 신뢰도 = 0.90, 표준편차 = 20초인 경우, 절대적 신뢰도를 통해 개인 측정값의 예상 변동 범위를 계산할 수 있다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. 준거지향 검사 -->
+  <section class="section" id="criterion">
+    <div class="section-title"><span class="s-num">8</span>준거지향 검사 (Criterion-Referenced Test)</div>
+    <div class="card">
+      <p><span class="kw">준거지향 검사</span>란 사전에 설정된 <strong>기준치의 달성 여부를 판단</strong>하는 절대평가 방식이다. 다른 사람과의 비교가 아니라, 미리 정해진 기준을 충족하는가를 평가한다.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+      <div class="hl green">
+        <div class="hl-title">장점</div>
+        <ul>
+          <li>운동 수행 목표의 <strong>구체적이고 이상적인 수준</strong>을 제시한다.</li>
+          <li>개인의 목표 달성 여부를 명확히 판단할 수 있다.</li>
+        </ul>
+      </div>
+      <div class="hl red">
+        <div class="hl-title">단점</div>
+        <ul>
+          <li>평가 범위가 <strong>제한</strong>되어 다양한 통계적 기법을 적용하기 불편하다.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="subsec">준거지향 검사의 타당도</div>
+    <div class="card">
+      <div class="subsec-sm">① 영역관련 타당도</div>
+      <p>논리에 의존하는 타당도이다. 검사 내용이 평가하고자 하는 영역을 잘 반영하는지를 <strong>논리적·전문가적 판단</strong>으로 검토한다.</p>
+
+      <div class="subsec-sm" style="margin-top:1rem;">② 결정 타당도</div>
+      <p><strong>기준치에 대한 적합성을 통계적으로 검증</strong>하는 타당도이다. 기준을 충족/불충족으로 분류하는 결정이 얼마나 정확한지를 검증한다.</p>
+      <div class="ex" style="margin-top:.6rem;">
+        <div class="ex-label">검증 방법 3가지</div>
+        <ul>
+          <li><span class="kw">판단적 방법 (Judgemental Approach)</span>: 전문가의 경험과 판단 기반</li>
+          <li><span class="kw">규준적 방법 (Normative Approach)</span>: 규준 자료를 이용하여 기준 설정</li>
+          <li><span class="kw">경험적 방법 (Empirical Approach)</span>: 경험적으로 수집된 자료 기반</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="subsec">준거지향 기준의 설정 방법</div>
+    <div class="rel-grid">
+      <div class="rel-item">
+        <div class="r-title">판단적 방법</div>
+        <div class="r-desc"><strong>전문가의 경험과 판단</strong>을 기초로 준거와 관련된 기준을 설정한다. 가장 직관적이지만 주관성이 개입될 수 있다.</div>
+      </div>
+      <div class="rel-item">
+        <div class="r-title">규준적 방법</div>
+        <div class="r-desc"><strong>규준 자료</strong>를 이용하여 기준점을 설정한다. 이론적으로 인정되는 기준이며, 집단의 수행 수준을 참고한다.</div>
+      </div>
+      <div class="rel-item">
+        <div class="r-title">경험적 방법</div>
+        <div class="r-desc"><strong>경험적으로 수집된 실제 자료</strong>를 근거로 기준을 설정한다. 실증적 데이터에 기반하므로 현실 반영도가 높다.</div>
+      </div>
+    </div>
+
+    <div class="subsec">준거지향 검사의 신뢰도</div>
+    <div class="card">
+      <ol style="padding-left:1.3rem;display:flex;flex-direction:column;gap:.4rem;">
+        <li>추정 방법은 기본적으로 <span class="kw">규준지향검사 방법과 동일</span>하다.</li>
+        <li><span class="kw">오차점수</span>는 진점수와 추정점수의 차이로 정의한다.</li>
+        <li style="margin-top:.3rem;">
+          <span class="kw">일치도계수</span>를 활용한다:<br>
+          <div class="formula" style="margin:.5rem 0 0;">
+            <div class="f-main">일치도계수 = 일치 빈도 / 전체 빈도</div>
+            <div class="f-sub">기준치 달성/미달성 분류의 일관성을 나타내는 지수</div>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 9. 비교표 -->
+  <section class="section" id="compare">
+    <div class="section-title"><span class="s-num">9</span>핵심 개념 비교표</div>
+
+    <!-- 측정척도 비교표 -->
+    <div class="subsec">측정척도 비교표</div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>척도</th>
+            <th>분류·식별</th>
+            <th>순서</th>
+            <th>동간성</th>
+            <th>절대영점</th>
+            <th>가감(+−)</th>
+            <th>승제(×÷)</th>
+            <th>예시</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="label-cell">명명척도</td>
+            <td class="check">✔</td>
+            <td class="cross">✘</td>
+            <td class="cross">✘</td>
+            <td class="cross">✘</td>
+            <td class="cross">✘</td>
+            <td class="cross">✘</td>
+            <td>등 번호, 성별</td>
+          </tr>
+          <tr>
+            <td class="label-cell">서열척도</td>
+            <td class="check">✔</td>
+            <td class="check">✔</td>
+            <td class="cross">✘</td>
+            <td class="cross">✘</td>
+            <td class="cross">✘</td>
+            <td class="cross">✘</td>
+            <td>성적 순위, 체력 등급</td>
+          </tr>
+          <tr>
+            <td class="label-cell">동간척도</td>
+            <td class="check">✔</td>
+            <td class="check">✔</td>
+            <td class="check">✔</td>
+            <td class="cross">✘</td>
+            <td class="check">✔</td>
+            <td class="cross">✘</td>
+            <td>온도, IQ</td>
+          </tr>
+          <tr>
+            <td class="label-cell">비율척도</td>
+            <td class="check">✔</td>
+            <td class="check">✔</td>
+            <td class="check">✔</td>
+            <td class="check">✔</td>
+            <td class="check">✔</td>
+            <td class="check">✔</td>
+            <td>길이, 무게, 시간</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 타당도 비교표 -->
+    <div class="subsec">타당도 종류 비교표</div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>종류</th>
+            <th>핵심 질문</th>
+            <th>평가 방법</th>
+            <th>비고</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="label-cell">내용관련 타당도</td>
+            <td>검사가 학습내용을 포함하는가?</td>
+            <td>논리적·전문가 판단</td>
+            <td>= 표면타당도, 논리타당도</td>
+          </tr>
+          <tr>
+            <td class="label-cell">준거관련 타당도</td>
+            <td>기준검사 점수와 얼마나 일치하는가?</td>
+            <td>상관계수 산출</td>
+            <td>공인타당도 + 예측타당도</td>
+          </tr>
+          <tr>
+            <td class="label-cell">구인관련 타당도</td>
+            <td>잠재된 특성·요인을 측정하는가?</td>
+            <td>요인분석, 다중회귀분석</td>
+            <td>= 구성타당도</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 신뢰도 추정방법 비교표 -->
+    <div class="subsec">신뢰도 추정방법 비교표</div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>방법</th>
+            <th>측정 횟수</th>
+            <th>핵심 특징</th>
+            <th>한계·조건</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="label-cell">검사-재검사법</td>
+            <td class="center">2회 (동일검사)</td>
+            <td>안정성·일관성 측정</td>
+            <td>학습·연습효과 배제 필요</td>
+          </tr>
+          <tr>
+            <td class="label-cell">동형법</td>
+            <td class="center">2회 (다른형태)</td>
+            <td>동형 검사 간 상관</td>
+            <td>동형 검사 2개 제작 필요</td>
+          </tr>
+          <tr>
+            <td class="label-cell">반분법</td>
+            <td class="center">1회</td>
+            <td>홀수/짝수 집단 분류 후 상관</td>
+            <td>피검자 수가 짝수여야 함</td>
+          </tr>
+          <tr>
+            <td class="label-cell">Spearman-Brown</td>
+            <td class="center">1회 (계산)</td>
+            <td>반분법 보완 공식</td>
+            <td>피검자 수 홀수일 때 활용</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 규준지향 vs 준거지향 -->
+    <div class="subsec">규준지향 검사 vs 준거지향 검사</div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>구분</th>
+            <th>규준지향 검사</th>
+            <th>준거지향 검사</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="label-cell">평가 기준</td>
+            <td>상대적 비교 (규준)</td>
+            <td>절대적 기준 (준거)</td>
+          </tr>
+          <tr>
+            <td class="label-cell">평가 방식</td>
+            <td>상대평가 (집단 내 위치)</td>
+            <td>절대평가 (기준 달성 여부)</td>
+          </tr>
+          <tr>
+            <td class="label-cell">목적</td>
+            <td>피검자 간 우열·순위 판단</td>
+            <td>목표 수준 달성 여부 확인</td>
+          </tr>
+          <tr>
+            <td class="label-cell">타당도</td>
+            <td>내용·준거·구인관련 타당도</td>
+            <td>영역관련·결정 타당도</td>
+          </tr>
+          <tr>
+            <td class="label-cell">신뢰도 지수</td>
+            <td>상관계수 (상대적 신뢰도)</td>
+            <td>일치도계수 (절대적 신뢰도)</td>
+          </tr>
+          <tr>
+            <td class="label-cell">장점</td>
+            <td>다양한 통계 기법 적용 가능</td>
+            <td>구체적 목표 수준 제시</td>
+          </tr>
+          <tr>
+            <td class="label-cell">단점</td>
+            <td>개인의 절대적 수준 알기 어려움</td>
+            <td>통계적 기법 적용 제한적</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 10. 시험 포인트 -->
+  <section class="section" id="exam">
+    <div class="section-title"><span class="s-num">10</span>시험 포인트 정리</div>
+    <div class="exam-grid">
+      <div class="exam-item">
+        <div class="e-q">Q. 변인이란?</div>
+        <div class="e-a">측정하고자 하는 속성이나 능력. 직접 측정 가능(키·몸무게)한 것과 추상적(인성·태도)인 것으로 나뉜다.</div>
+      </div>
+      <div class="exam-item">
+        <div class="e-q">Q. 4가지 측정척도의 차이는?</div>
+        <div class="e-a">명명(분류)→서열(순위)→동간(동간성+가감)→비율(절대영점+가감승제). 높아질수록 더 많은 수리 연산이 가능하다.</div>
+      </div>
+      <div class="exam-item">
+        <div class="e-q">Q. 동간척도와 비율척도의 결정적 차이는?</div>
+        <div class="e-a">절대영점(0이 진짜 없음을 의미)의 유무. 비율척도만 절대영점을 가지므로 ×÷ 연산이 가능하다.</div>
+      </div>
+      <div class="exam-item">
+        <div class="e-q">Q. 내용·준거·구인 타당도 차이는?</div>
+        <div class="e-a">내용=학습내용 포함 여부(논리 판단) / 준거=기준검사와의 상관 / 구인=잠재요인 측정(요인분석)</div>
+      </div>
+      <div class="exam-item">
+        <div class="e-q">Q. 공인타당도 vs 예측타당도?</div>
+        <div class="e-a">공인=현재 측정값과 현재 준거의 상관 / 예측=현재 측정값으로 미래 수행 예측 가능성</div>
+      </div>
+      <div class="exam-item">
+        <div class="e-q">Q. 반분법의 한계와 보완책은?</div>
+        <div class="e-a">피검자 수 홀수이면 반분법 적용 어려움 → Spearman-Brown 공식으로 보완</div>
+      </div>
+      <div class="exam-item">
+        <div class="e-q">Q. 준거지향 검사의 신뢰도 지수는?</div>
+        <div class="e-a">일치도계수 = 일치 빈도 / 전체 빈도. 기준치 달성/미달성 분류의 일관성을 나타낸다.</div>
+      </div>
+      <div class="exam-item">
+        <div class="e-q">Q. 규준지향 vs 준거지향 검사 핵심 차이?</div>
+        <div class="e-a">규준지향=상대평가(집단 내 위치) / 준거지향=절대평가(기준 달성 여부). 평가 기준이 다르다.</div>
+      </div>
+      <div class="exam-item">
+        <div class="e-q">Q. 구인관련 타당도 검증 방법은?</div>
+        <div class="e-a">요인분석, 다중회귀분석. 직접 측정하기 어려운 잠재 요인을 통계적으로 검증한다.</div>
+      </div>
+      <div class="exam-item">
+        <div class="e-q">Q. 준거지향 기준 설정 방법 3가지는?</div>
+        <div class="e-a">판단적 방법(전문가 경험) / 규준적 방법(규준자료 활용) / 경험적 방법(수집 자료 기반)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11. 암기 체크리스트 -->
+  <section class="section" id="checklist">
+    <div class="section-title"><span class="s-num">11</span>암기 체크리스트 (시험 직전 확인)</div>
+    <div class="card">
+      <p style="font-size:13px;color:var(--gray-mid);margin-bottom:.9rem;">아래 항목을 스스로 설명할 수 있으면 체크하세요.</p>
+      <ul class="checklist">
+        <li><input type="checkbox" /><span>변인의 정의와 직접·간접 측정 변인 예시를 말할 수 있다.</span></li>
+        <li><input type="checkbox" /><span>질적/양적/독립/종속/기준/예측 변인을 구분할 수 있다.</span></li>
+        <li><input type="checkbox" /><span>명명척도의 특징과 예시를 설명할 수 있다.</span></li>
+        <li><input type="checkbox" /><span>서열척도의 특징과 한계(간격 불동일)를 설명할 수 있다.</span></li>
+        <li><input type="checkbox" /><span>동간척도와 비율척도의 차이(절대영점)를 설명할 수 있다.</span></li>
+        <li><input type="checkbox" /><span>4가지 척도의 가감승제 가능 여부를 말할 수 있다.</span></li>
+        <li><input type="checkbox" /><span>규준지향 검사의 정의와 검사의 질 3요인을 말할 수 있다.</span></li>
+        <li><input type="checkbox" /><span>내용관련 타당도의 정의(=표면·논리타당도)를 설명할 수 있다.</span></li>
+        <li><input type="checkbox" /><span>공인타당도와 예측타당도의 차이를 설명할 수 있다.</span></li>
+        <li><input type="checkbox" /><span>구인관련 타당도의 정의와 검증 방법(요인분석·다중회귀)을 말할 수 있다.</span></li>
+        <li><input type="checkbox" /><span>검사-재검사법 / 동형법 / 반분법 각각의 방법을 설명할 수 있다.</span></li>
+        <li><input type="checkbox" /><span>Spearman-Brown 공식이 필요한 상황을 설명할 수 있다.</span></li>
+        <li><input type="checkbox" /><span>절대적 신뢰도의 의미를 설명할 수 있다.</span></li>
+        <li><input type="checkbox" /><span>준거지향 검사의 정의, 장단점을 설명할 수 있다.</span></li>
+        <li><input type="checkbox" /><span>영역관련 타당도와 결정 타당도의 차이를 설명할 수 있다.</span></li>
+        <li><input type="checkbox" /><span>준거지향 기준 설정 3가지 방법을 설명할 수 있다.</span></li>
+        <li><input type="checkbox" /><span>일치도계수 공식(일치빈도/전체빈도)을 말할 수 있다.</span></li>
+        <li><input type="checkbox" /><span>규준지향 검사와 준거지향 검사의 차이를 비교하여 설명할 수 있다.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 12. 전체 요약 -->
+  <section class="section" id="summary">
+    <div class="section-title"><span class="s-num">12</span>전체 요약</div>
+    <div class="summary-box">
+      <h3>이 범위의 핵심은 무엇인가?</h3>
+      <ul>
+        <li><span class="sh">측정의 의미:</span> 신체활동 특성을 질적·양적으로 분류하여 정보를 제공하는 과정. 타당한 변인 정의, 변인 종류, 평가방법 이해가 선행되어야 한다.</li>
+        <li><span class="sh">4가지 측정척도:</span> 명명(분류)→서열(순위)→동간(동간성)→비율(절대영점). 수준이 높을수록 더 많은 수리 연산 가능. 동간과 비율의 차이는 절대영점.</li>
+        <li><span class="sh">변인의 분류:</span> 질적/양적(측정 방식), 독립/종속(역할), 기준/예측(관계)으로 구분.</li>
+        <li><span class="sh">규준지향 검사:</span> 집단 내 상대적 위치를 평가하는 검사. 검사 질은 도구 적절성·일관성·정확한 점수부여로 결정.</li>
+        <li><span class="sh">타당도 3종:</span> 내용(학습내용 포함 여부) / 준거(기준검사와의 상관: 공인·예측) / 구인(잠재요인 측정: 요인분석)</li>
+        <li><span class="sh">신뢰도 추정:</span> 검사-재검사(2회 동일) / 동형법(2가지 형태) / 반분법(홀짝분류) / Spearman-Brown(홀수 피검자 보완)</li>
+        <li><span class="sh">준거지향 검사:</span> 절대적 기준 달성 여부를 평가. 신뢰도는 일치도계수(일치빈도/전체빈도)로 산출.</li>
+        <li><span class="sh">핵심 비교:</span> 규준지향=상대평가/상관계수 ↔ 준거지향=절대평가/일치도계수</li>
+      </ul>
+    </div>
+  </section>
+
+  <hr />
+  <p style="text-align:center;font-size:12px;color:#aaa;">건강체력측정평가 2단원 복습 정리노트 · PDF 16~30p 기준</p>
+
+</div>
+
+<script>
+  (function() {
+    var boxes = document.querySelectorAll('.checklist input[type="checkbox"]');
+    boxes.forEach(function(box, i) {
+      var key = 'ch2_chk_' + i;
+      box.checked = localStorage.getItem(key) === '1';
+      box.addEventListener('change', function() {
+        localStorage.setItem(key, this.checked ? '1' : '0');
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
