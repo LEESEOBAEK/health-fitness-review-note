@@ -64,6 +64,30 @@
       transition: background .15s; white-space: nowrap;
     }
     nav a:hover { background: rgba(255,255,255,.15); color: #fff; }
+    .nav-ch-btn {
+      margin-left: auto;
+      background: rgba(255,255,255,.18);
+      border: 1px solid rgba(255,255,255,.38);
+      color: #fff !important;
+      font-size: 12px !important;
+      font-weight: 700 !important;
+      border-radius: 20px;
+      padding: .28rem .9rem !important;
+    }
+    .nav-ch-btn:hover { background: rgba(255,255,255,.32) !important; }
+    .chapter-nav {
+      display: flex; justify-content: space-between; align-items: center;
+      margin: 2rem 0 0; gap: 1rem; flex-wrap: wrap;
+    }
+    .chapter-nav a {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: var(--primary); color: #fff;
+      padding: .75rem 1.5rem; border-radius: var(--radius);
+      text-decoration: none; font-weight: 700; font-size: 14px;
+      box-shadow: var(--shadow); transition: background .15s;
+    }
+    .chapter-nav a:hover { background: #133a5c; }
+    .chapter-nav .ch-sub { font-size: 11px; opacity: .75; font-weight: 400; }
 
     /* WRAPPER */
     .wrapper {
@@ -407,6 +431,7 @@
     <a href="#exam">시험포인트</a>
     <a href="#checklist">체크리스트</a>
     <a href="#summary">전체요약</a>
+    <a href="../" class="nav-ch-btn">← 1단원</a>
   </div>
 </nav>
 
@@ -1056,8 +1081,17 @@
     </div>
   </section>
 
+  <div class="chapter-nav">
+    <a href="../">
+      <span>
+        <span class="ch-sub">이전 단원</span><br>
+        ← 1단원 — 측정과 평가의 개요
+      </span>
+    </a>
+  </div>
+
   <hr />
-  <p style="text-align:center;font-size:12px;color:#aaa;">건강체력측정평가 2단원 복습 정리노트 · PDF 16~30p 기준</p>
+  <p style="text-align:center;font-size:12px;color:#aaa;">건강체력측정평가 복습 정리노트 · PDF 16~30p 기준 · 2단원</p>
 
 </div>
 
