@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>건강체력측정평가 — 3단원 복습 정리노트</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary:    #1d5c8a;
+      --primary-lt: #e6f1f9;
+      --primary-md: #a8cce4;
+      --accent:     #b03a1e;
+      --accent-lt:  #fdf0ed;
+      --green:      #1b7050;
+      --green-lt:   #e8f5ef;
+      --amber:      #8a6200;
+      --amber-lt:   #fdf5db;
+      --purple:     #553888;
+      --purple-lt:  #f0ebfb;
+      --teal:       #17697a;
+      --teal-lt:    #e5f4f6;
+      --gray-dark:  #1e1e1e;
+      --gray-mid:   #4a4a4a;
+      --border:     #d5dce6;
+      --text:       #1e1e1e;
+      --radius:     8px;
+      --shadow:     0 2px 10px rgba(0,0,0,.07);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', 'Pretendard', sans-serif;
+      font-size: 15px;
+      line-height: 1.85;
+      color: var(--text);
+      background: #edf0f5;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--primary);
+      box-shadow: 0 2px 8px rgba(0,0,0,.25);
+    }
+    .nav-inner {
+      max-width: 960px; margin: 0 auto;
+      padding: 0 1rem;
+      display: flex; align-items: center; flex-wrap: wrap;
+    }
+    .nav-brand {
+      color: #fff; font-weight: 700; font-size: 12.5px;
+      padding: .6rem 1rem .6rem 0;
+      margin-right: .5rem;
+      border-right: 1px solid rgba(255,255,255,.3);
+      white-space: nowrap;
+    }
+    nav a {
+      color: rgba(255,255,255,.82); text-decoration: none;
+      font-size: 12px; padding: .6rem .55rem;
+      transition: background .15s; white-space: nowrap;
+    }
+    nav a:hover { background: rgba(255,255,255,.15); color: #fff; }
+    .nav-ch-btn {
+      margin-left: auto;
+      background: rgba(255,255,255,.18);
+      border: 1px solid rgba(255,255,255,.38);
+      color: #fff !important;
+      font-size: 12px !important;
+      font-weight: 700 !important;
+      border-radius: 20px;
+      padding: .28rem .9rem !important;
+    }
+    .nav-ch-btn:hover { background: rgba(255,255,255,.32) !important; }
+
+    /* WRAPPER */
+    .wrapper {
+      max-width: 960px; margin: 0 auto;
+      padding: 2rem 1.25rem 4rem;
+    }
+
+    /* HEADER */
+    header {
+      background: linear-gradient(135deg, #0e2f4a 0%, #1d5c8a 55%, #2d7ab5 100%);
+      color: #fff;
+      padding: 2.8rem 2.2rem 2.2rem;
+      border-radius: var(--radius);
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 18px rgba(0,0,0,.15);
+    }
+    .header-tag {
+      display: inline-block;
+      background: rgba(255,255,255,.15);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 20px;
+      font-size: 11.5px; letter-spacing: .06em;
+      padding: .2rem .9rem; margin-bottom: 1rem;
+    }
+    header h1 {
+      font-size: clamp(1.45rem, 4vw, 2.1rem);
+      font-weight: 700; line-height: 1.3; margin-bottom: .3rem;
+    }
+    header .h-sub { font-size: 1rem; opacity: .75; margin-bottom: 1.1rem; }
+    header .h-meta { display: flex; flex-wrap: wrap; gap: .45rem; font-size: 12px; }
+    header .h-meta span {
+      background: rgba(255,255,255,.14);
+      border-radius: 4px; padding: .2rem .75rem;
+    }
+
+    /* SECTIONS */
+    .section { margin-bottom: 2.8rem; }
+    .section-title {
+      display: flex; align-items: center; gap: .6rem;
+      font-size: 1.15rem; font-weight: 700; color: var(--primary);
+      border-bottom: 2.5px solid var(--primary);
+      padding-bottom: .45rem; margin-bottom: 1.3rem;
+    }
+    .section-title .s-num {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 28px; height: 28px;
+      background: var(--primary); color: #fff;
+      border-radius: 6px; font-size: 13px; font-weight: 700; flex-shrink: 0;
+    }
+    .subsec {
+      font-size: .96rem; font-weight: 700; color: var(--gray-dark);
+      margin: 1.5rem 0 .65rem;
+      padding-left: .8rem;
+      border-left: 4px solid var(--primary);
+    }
+    .subsec-sm {
+      font-size: .88rem; font-weight: 700; color: var(--primary);
+      margin: 1rem 0 .4rem;
+    }
+
+    /* CARDS */
+    .card {
+      background: #fff; border-radius: var(--radius);
+      padding: 1.2rem 1.4rem;
+      box-shadow: var(--shadow); margin-bottom: 1rem;
+    }
+    p { margin-bottom: .4rem; }
+    p:last-child { margin-bottom: 0; }
+
+    /* KEYWORDS */
+    .kw        { font-weight: 700; color: var(--primary); }
+    .kw-red    { font-weight: 700; color: var(--accent); }
+    .kw-green  { font-weight: 700; color: var(--green); }
+    .kw-amber  { font-weight: 700; color: var(--amber); }
+    .kw-purple { font-weight: 700; color: var(--purple); }
+    .kw-teal   { font-weight: 700; color: var(--teal); }
+
+    /* OBJECTIVE BOX */
+    .obj-box {
+      background: var(--primary-lt);
+      border: 1.5px solid var(--primary-md);
+      border-left: 5px solid var(--primary);
+      border-radius: var(--radius);
+      padding: 1.2rem 1.5rem;
+    }
+    .obj-box ol { padding-left: 1.4rem; }
+    .obj-box li { font-weight: 500; margin-bottom: .3rem; }
+
+    /* HIGHLIGHT BOXES */
+    .hl { border-radius: var(--radius); padding: 1.1rem 1.4rem; margin-bottom: 1rem; box-shadow: var(--shadow); }
+    .hl.blue   { background: var(--primary-lt); border-left: 5px solid var(--primary); }
+    .hl.red    { background: var(--accent-lt);  border-left: 5px solid var(--accent); }
+    .hl.green  { background: var(--green-lt);   border-left: 5px solid var(--green); }
+    .hl.amber  { background: var(--amber-lt);   border-left: 5px solid var(--amber); }
+    .hl.purple { background: var(--purple-lt);  border-left: 5px solid var(--purple); }
+    .hl.teal   { background: var(--teal-lt);    border-left: 5px solid var(--teal); }
+    .hl-title { font-weight: 700; font-size: 13.5px; margin-bottom: .55rem; }
+    .hl.blue   .hl-title { color: var(--primary); }
+    .hl.red    .hl-title { color: var(--accent); }
+    .hl.green  .hl-title { color: var(--green); }
+    .hl.amber  .hl-title { color: var(--amber); }
+    .hl.purple .hl-title { color: var(--purple); }
+    .hl.teal   .hl-title { color: var(--teal); }
+    .hl ul, .hl ol { padding-left: 1.3rem; }
+    .hl li { font-size: 13.5px; margin-bottom: .25rem; }
+
+    /* EXAMPLE BOX */
+    .ex {
+      background: #f7f9fb; border: 1px solid var(--border);
+      border-radius: 6px; padding: .75rem 1rem;
+      margin-top: .65rem; font-size: 13.5px;
+    }
+    .ex-label {
+      font-size: 11px; font-weight: 700; color: var(--primary);
+      letter-spacing: .05em; margin-bottom: .3rem;
+    }
+    .ex ul, .ex ol { padding-left: 1.2rem; }
+    .ex li { margin-bottom: .12rem; }
+
+    /* FORMULA BOX */
+    .formula {
+      background: #f0f5fa; border: 1.5px dashed var(--primary);
+      border-radius: var(--radius); padding: 1rem 1.3rem;
+      text-align: center; margin: .7rem 0;
+    }
+    .formula .f-main { font-size: 1.1rem; font-weight: 700; color: var(--primary); }
+    .formula .f-sub  { font-size: 12.5px; color: var(--gray-mid); margin-top: .35rem; }
+
+    /* CONCEPT PAIR GRID */
+    .pair-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem; margin-bottom: 1rem;
+    }
+    .pair-card {
+      border-radius: var(--radius); padding: 1.1rem 1.2rem;
+      box-shadow: var(--shadow);
+    }
+    .pair-card.left  { background: var(--primary-lt); border-top: 4px solid var(--primary); }
+    .pair-card.right { background: var(--green-lt);   border-top: 4px solid var(--green); }
+    .pair-card .pc-title { font-weight: 700; font-size: 14.5px; margin-bottom: .5rem; }
+    .pair-card.left  .pc-title { color: var(--primary); }
+    .pair-card.right .pc-title { color: var(--green); }
+    .pair-card ul { padding-left: 1.2rem; }
+    .pair-card li { font-size: 13px; margin-bottom: .25rem; line-height: 1.65; }
+
+    /* FREQ CONCEPT CARDS */
+    .freq-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: .9rem; margin-bottom: 1rem;
+    }
+    .freq-item {
+      background: #fff; border-radius: var(--radius);
+      border-top: 3px solid var(--primary);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--primary);
+      padding: 1rem 1.1rem;
+      box-shadow: var(--shadow);
+    }
+    .freq-item .fi-title { font-weight: 700; font-size: 14px; color: var(--primary); margin-bottom: .4rem; }
+    .freq-item .fi-en    { font-size: 11px; color: var(--gray-mid); margin-bottom: .35rem; letter-spacing: .03em; }
+    .freq-item .fi-desc  { font-size: 13px; color: var(--gray-mid); line-height: 1.65; }
+
+    /* CENTRAL TENDENCY CARDS */
+    .ct-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+      gap: 1rem; margin-bottom: 1rem;
+    }
+    .ct-card {
+      border-radius: var(--radius);
+      box-shadow: var(--shadow); overflow: hidden;
+    }
+    .ct-card .ct-head {
+      padding: .65rem 1rem;
+      color: #fff; font-weight: 700; font-size: 14px;
+    }
+    .ct-card.mode   .ct-head { background: var(--primary); }
+    .ct-card.median .ct-head { background: var(--green); }
+    .ct-card.mean   .ct-head { background: var(--teal); }
+    .ct-card .ct-body { background: #fff; padding: .95rem 1rem; font-size: 13px; color: var(--gray-mid); line-height: 1.7; }
+
+    /* GRAPH DESC BOXES */
+    .graph-box {
+      background: #f0f5fa;
+      border: 1px solid var(--primary-md);
+      border-left: 4px solid var(--primary);
+      border-radius: var(--radius);
+      padding: .85rem 1.1rem;
+      margin-bottom: .7rem;
+      font-size: 13px;
+    }
+    .graph-box .gb-label {
+      font-size: 11px; font-weight: 700; color: var(--primary);
+      letter-spacing: .05em; margin-bottom: .25rem;
+    }
+
+    /* TABLE */
+    .table-wrap { overflow-x: auto; margin-bottom: 1.2rem; border-radius: var(--radius); }
+    table {
+      width: 100%; border-collapse: collapse;
+      font-size: 13.5px; background: #fff;
+      box-shadow: var(--shadow);
+    }
+    thead th {
+      background: var(--primary); color: #fff;
+      font-weight: 700; padding: .75rem 1rem;
+      text-align: center; white-space: nowrap;
+    }
+    thead th:first-child { text-align: left; }
+    tbody td {
+      padding: .65rem 1rem;
+      border-bottom: 1px solid #eef0f3;
+      vertical-align: top; line-height: 1.7;
+    }
+    tbody tr:last-child td { border-bottom: none; }
+    tbody tr:nth-child(even) { background: #f8f9fb; }
+    td.label-cell { font-weight: 700; color: var(--primary); white-space: nowrap; }
+    td.center { text-align: center; }
+
+    /* EXAM CARDS */
+    .exam-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: .85rem;
+    }
+    .exam-item {
+      background: #fff;
+      border: 1px solid #e0d4cf;
+      border-top: 3px solid var(--accent);
+      border-radius: var(--radius);
+      padding: 1rem 1.1rem;
+      box-shadow: var(--shadow);
+    }
+    .exam-item .e-q { font-size: 13px; font-weight: 700; color: var(--accent); margin-bottom: .4rem; }
+    .exam-item .e-a { font-size: 13px; color: var(--gray-dark); line-height: 1.65; }
+
+    /* CHECKLIST */
+    .checklist {
+      list-style: none; padding: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: .5rem;
+    }
+    .checklist li {
+      display: flex; align-items: flex-start; gap: .6rem;
+      background: #fff; border: 1px solid var(--border);
+      border-radius: 6px; padding: .6rem .85rem;
+      font-size: 13.5px; box-shadow: var(--shadow);
+    }
+    .checklist input[type="checkbox"] {
+      margin-top: .22rem; accent-color: var(--primary);
+      width: 15px; height: 15px; flex-shrink: 0; cursor: pointer;
+    }
+
+    /* CHAPTER NAV */
+    .chapter-nav {
+      display: flex; justify-content: space-between; align-items: center;
+      margin: 2rem 0 0; gap: 1rem; flex-wrap: wrap;
+    }
+    .chapter-nav a {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: var(--primary); color: #fff;
+      padding: .75rem 1.5rem; border-radius: var(--radius);
+      text-decoration: none; font-weight: 700; font-size: 14px;
+      box-shadow: var(--shadow); transition: background .15s;
+    }
+    .chapter-nav a:hover { background: #144468; }
+    .chapter-nav .ch-sub { font-size: 11px; opacity: .75; font-weight: 400; display: block; }
+
+    /* SUMMARY */
+    .summary-box {
+      background: linear-gradient(135deg, #0e2f4a 0%, #1d5c8a 100%);
+      color: #fff; border-radius: var(--radius);
+      padding: 1.8rem 2rem; box-shadow: var(--shadow);
+    }
+    .summary-box h3 {
+      font-size: 1.1rem; margin-bottom: 1rem;
+      border-bottom: 1px solid rgba(255,255,255,.25);
+      padding-bottom: .6rem;
+    }
+    .summary-box ul { padding-left: 1.2rem; display: flex; flex-direction: column; gap: .4rem; }
+    .summary-box li { font-size: 13.5px; line-height: 1.75; opacity: .93; }
+    .summary-box .sh { color: #ffe066; font-weight: 700; }
+
+    hr { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
+
+    /* PRINT */
+    @media print {
+      nav { display: none; }
+      body { background: #fff; font-size: 13px; }
+      .wrapper { padding: 0; max-width: 100%; }
+      header { background: #0e2f4a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .card, .freq-item, .ct-card, .exam-item, .hl, .pair-card { box-shadow: none; }
+      .summary-box { background: #0e2f4a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      thead th { background: var(--primary) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+
+    @media (max-width: 600px) {
+      header { padding: 1.8rem 1.2rem 1.5rem; }
+      .wrapper { padding: 1rem .75rem 3rem; }
+      nav a { padding: .55rem .4rem; font-size: 11px; }
+      .pair-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <span class="nav-brand">건강체력측정평가 · 3단원</span>
+    <a href="#obj">학습목표</a>
+    <a href="#stat">통계 개념</a>
+    <a href="#variable">변인</a>
+    <a href="#pop">전집·표본</a>
+    <a href="#freq">빈도분포</a>
+    <a href="#pct">백분위</a>
+    <a href="#central">집중경향치</a>
+    <a href="#compare">비교표</a>
+    <a href="#exam">시험포인트</a>
+    <a href="#checklist">체크리스트</a>
+    <a href="#summary">전체요약</a>
+    <a href="../ch2/" class="nav-ch-btn">← 2단원</a>
+  </div>
+</nav>
+
+<div class="wrapper">
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-tag">Exercise Prescription · 3단원</div>
+    <h1>통계의 기초와 빈도분포</h1>
+    <p class="h-sub">수업 복습 및 시험 대비 정리노트</p>
+    <div class="h-meta">
+      <span>학습 범위: PDF 31~45페이지</span>
+      <span>통계 개념 · 빈도분포 · 집중경향치</span>
+    </div>
+  </header>
+
+  <!-- 1. 학습목표 -->
+  <section class="section" id="obj">
+    <div class="section-title"><span class="s-num">1</span>학습목표</div>
+    <div class="obj-box">
+      <ol>
+        <li><span class="kw">통계의 의의와 기능</span>을 이해하고 통계의 기본 구성요인을 설명할 수 있다.</li>
+        <li><span class="kw">전집과 표본</span>의 개념 차이를 구분하고, 변인의 의미를 설명할 수 있다.</li>
+        <li><span class="kw">빈도분포</span>의 구성 요소(점수범위, 급간, 정확한계, 누가빈도, 누가백분율)를 이해하고 작성 원리를 설명할 수 있다.</li>
+        <li><span class="kw">백분위와 백분점수</span>의 개념을 이해하고 활용 방법을 설명할 수 있다.</li>
+        <li><span class="kw">집중경향치</span>(최빈치·중앙치·평균치)의 개념과 차이를 구분하여 설명할 수 있다.</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 2. 통계의 의의 및 개념 -->
+  <section class="section" id="stat">
+    <div class="section-title"><span class="s-num">2</span>통계의 의의 및 개념</div>
+    <div class="card">
+      <p><span class="kw">통계(Statistics)</span>란 한 집단으로부터 얻은 점수·빈도 등의 자료를 통해 <strong>그 집단의 특성을 이해하려는 방법</strong>이다. 단순히 숫자를 다루는 것이 아니라, 점수나 빈도의 의미를 파악하고 관련된 사실과 현상을 <strong>정확하고 간결하게 기술·설명·예측</strong>하는 수단이다.</p>
+    </div>
+    <div class="hl blue">
+      <div class="hl-title">통계의 두 가지 핵심 기능 (시험 포인트)</div>
+      <ol>
+        <li><span class="kw">요약·기술 기능</span> — 수집된 자료를 요약하여 집단의 특성을 간결하게 기술한다.</li>
+        <li><span class="kw">추론·예측 기능</span> — 관찰된 결과를 토대로 관찰되지 않은 현상에 대한 일반적 결론을 내린다.</li>
+      </ol>
+    </div>
+    <div class="hl amber">
+      <div class="hl-title">통계가 중요한 이유</div>
+      <p style="font-size:13.5px;">통계는 진리 탐구를 위한 모든 학문의 조사연구뿐만 아니라, <strong>스포츠 현장, 경제, 사회 등 일상생활 전반</strong>에서 중요한 역할을 한다. 체육학에서는 체력 검사 결과의 해석, 운동 프로그램 효과 분석, 개인의 능력 비교 등에 통계가 필수적으로 활용된다.</p>
+    </div>
+  </section>
+
+  <!-- 3. 변인 -->
+  <section class="section" id="variable">
+    <div class="section-title"><span class="s-num">3</span>변인 (Variable)</div>
+    <div class="card">
+      <p><span class="kw">변인</span>이란 연구 대상이 되는 개체들이 어떠한 <strong>속성이나 특징</strong>을 지니고 있어, 집단별로 서로 다른 값을 갖거나 개체를 서로 구별할 수 있는 것이다.</p>
+      <p style="margin-top:.5rem;">즉, 측정 대상마다 <strong>값이 달라질 수 있는 특성</strong>이 바로 변인이다. 통계 분석의 출발점은 어떤 변인을 어떻게 측정할 것인가를 정하는 것에서 시작된다.</p>
+    </div>
+    <div class="ex">
+      <div class="ex-label">변인의 예시</div>
+      <ul>
+        <li>키, 몸무게, 체지방률, 최대산소섭취량 등 — 개인마다 값이 다른 신체적 특성</li>
+        <li>성별, 학년, 운동 경험 유무 등 — 개체를 범주로 구분할 수 있는 특성</li>
+        <li>체력 검사 점수, 달리기 기록 등 — 수행 능력의 차이를 나타내는 특성</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 4. 전집과 표본 -->
+  <section class="section" id="pop">
+    <div class="section-title"><span class="s-num">4</span>전집과 표본</div>
+    <div class="pair-grid">
+      <div class="pair-card left">
+        <div class="pc-title">전집 (Population)</div>
+        <ul>
+          <li>한정된 집단의 <strong>전체 구성원</strong>과 <strong>전체 사례</strong>를 의미한다.</li>
+          <li>연구에서 결론을 내리고자 하는 대상 전체이다.</li>
+          <li>현실적으로 전수 조사가 불가능한 경우가 많아 표본을 활용한다.</li>
+        </ul>
+      </div>
+      <div class="pair-card right">
+        <div class="pc-title">표본 (Sample)</div>
+        <ul>
+          <li>전집의 <strong>일부</strong>로서, 전집으로부터 선발하여 <strong>실제 조사되는 대상</strong>이다.</li>
+          <li>전집의 특성을 추정하기 위한 대표 집단으로 기능한다.</li>
+          <li>표본이 전집을 잘 대표할수록 통계적 추론의 신뢰도가 높아진다.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="hl blue">
+      <div class="hl-title">전집 vs 표본 핵심 관계</div>
+      <p style="font-size:13.5px;"><span class="kw">전집</span>은 연구의 궁극적 대상 전체이고, <span class="kw">표본</span>은 그 일부를 실제로 조사하는 것이다. 표본 조사 결과를 바탕으로 전집의 특성을 <strong>추론(추정)</strong>하는 것이 통계의 핵심 기능 중 하나이다.</p>
+    </div>
+  </section>
+
+  <!-- 5. 빈도분포 -->
+  <section class="section" id="freq">
+    <div class="section-title"><span class="s-num">5</span>빈도분포 (Frequency Distribution)</div>
+    <div class="card">
+      <p><span class="kw">빈도분포</span>란 수집된 자료를 일정한 기준으로 묶어 <strong>각 점수 구간에 해당하는 빈도(사례 수)를 정리한 표</strong>이다. 많은 자료를 한눈에 파악하고 분포의 형태를 이해하기 위해 사용한다. 개별 점수를 그대로 나열하는 단순 빈도분포와, 점수를 급간으로 묶는 <strong>묶음 빈도분포</strong>가 있다.</p>
+    </div>
+
+    <div class="graph-box">
+      <div class="gb-label">표 10-1 — 크기순으로 배열한 유연성 검사점수 빈도분포</div>
+      <p>유연성 검사에서 얻은 원점수를 크기 순서대로 나열하고 각 점수의 빈도를 기록한 단순 빈도분포표이다. 자료 전체의 분포를 확인하는 첫 번째 단계로, 이후 급간을 설정하여 묶음 빈도분포로 변환한다.</p>
+    </div>
+
+    <!-- 점수범위 -->
+    <div class="subsec">점수범위 (Score Range)</div>
+    <div class="card">
+      <p>묶음 빈도분포를 작성하기 위해서는 먼저 점수들을 묶을 <span class="kw">급간의 크기</span>를 결정해야 하며, 이를 위해 자료 전체의 점수범위를 파악해야 한다.</p>
+      <p style="margin-top:.5rem;"><strong>점수범위 = 최고점수 − 최저점수</strong></p>
+      <div class="ex">
+        <div class="ex-label">급간 수 결정 원칙</div>
+        <ul>
+          <li>통상적으로 급간의 수는 <span class="kw">10~15개</span> 사이로 제한한다.</li>
+          <li>급간 수가 <strong>많을수록</strong> → 묶음에 의한 오차는 적지만, 계산이 복잡해진다.</li>
+          <li>급간 수가 <strong>적을수록</strong> → 계산은 간단하지만, 정보 손실이 커진다.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 급간의 크기 -->
+    <div class="subsec">급간의 크기 (Class Interval Size)</div>
+    <div class="card">
+      <p>급간의 크기는 <strong>각 급간이 포함하는 점수의 범위</strong>를 말한다. 급간의 수를 10~15개로 유지하면서, 계산의 편의를 위해 통상 <span class="kw">홀수(3, 5, 7 등)</span>로 설정하는 것이 일반적이다.</p>
+      <div class="formula">
+        <div class="f-main">급간의 크기 ≒ 점수범위 ÷ 급간의 수 (10~15)</div>
+        <div class="f-sub">계산값을 반올림하여 편의에 맞는 홀수로 설정</div>
+      </div>
+    </div>
+
+    <!-- 급간의 점수한계 -->
+    <div class="subsec">급간의 점수한계 (Apparent Limits)</div>
+    <div class="card">
+      <p>급간의 크기가 결정되면 각 급간의 <span class="kw">점수한계(하한계~상한계)</span>를 설정한다. 맨 아래 급간의 하한계는 <strong>급간 크기의 배수로 시작</strong>하는 것이 좋다 — 이는 계산과 이해를 편리하게 하기 위함이다.</p>
+      <div class="ex">
+        <div class="ex-label">예시</div>
+        <ul>
+          <li>급간 크기가 5일 때: 25~29, 30~34, 35~39 … 처럼 5의 배수로 시작하는 것이 일반적</li>
+          <li>표기 방식: "하한계~상한계" 형태로 표에 기입</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 정확한계 -->
+    <div class="subsec">정확한계 (Exact / True Limits)</div>
+    <div class="card">
+      <p>연속적 변인을 측정할 때, 측정치는 반드시 <strong>측정 오차를 수반</strong>한다. 따라서 기록된 점수는 그 값 자체가 아니라 해당 점수를 중심으로 한 <strong>일정 범위 안의 모든 값</strong>을 포함한다고 보아야 한다.</p>
+    </div>
+    <div class="hl red">
+      <div class="hl-title">정확한계의 핵심 원리 (시험 빈출)</div>
+      <p style="font-size:13.5px;margin-bottom:.6rem;">측정값 <span class="kw-red">40점</span>은 실제로는 <span class="kw-red">39.5 이상 40.5 미만</span>의 모든 값을 포함한다.</p>
+      <ul>
+        <li><span class="kw-red">정확 하한계</span> = 측정값 − 0.5 (예: 25점 → 24.5)</li>
+        <li><span class="kw-red">정확 상한계</span> = 측정값 + 0.5 (예: 29점 → 29.5)</li>
+        <li>급간 25~29의 정확한계 = <strong>24.5 ~ 29.5</strong></li>
+      </ul>
+      <p style="font-size:13.5px;margin-top:.6rem;">정확한계는 측정 변인이 <strong>연속적 변인</strong>이라는 가정에 근거한다. 정확한계를 사용함으로써 점수 간 경계를 명확히 하여 백분위 등의 계산 정확도를 높인다.</p>
+    </div>
+
+    <div class="graph-box">
+      <div class="gb-label">표 10-2 — 유연성 검사점수의 묶음 빈도분포</div>
+      <p>원점수를 일정한 급간으로 묶어 정리한 표이다. 각 급간의 점수한계, 정확한계, 빈도(f)를 함께 기록하며, 이후 누가빈도와 누가백분율 계산의 기초 자료가 된다.</p>
+    </div>
+
+    <div class="graph-box">
+      <div class="gb-label">그림 10-1 — 막대그래프 (히스토그램, Histogram)</div>
+      <p>각 급간의 빈도를 막대의 높이로 나타낸 그래프이다. 급간은 연속으로 이어지므로 막대 사이에 간격이 없다. 분포의 전체적인 형태(정상분포·편포 여부 등)를 한눈에 파악할 수 있다.</p>
+    </div>
+
+    <div class="graph-box">
+      <div class="gb-label">그림 10-2 — 절선그림표 (빈도다각형, Frequency Polygon)</div>
+      <p>각 급간의 중앙점(급간 중간값)과 빈도를 점으로 찍고 선으로 연결한 그래프이다. 히스토그램과 동일한 정보를 선의 형태로 표현하며, 두 집단의 분포를 같은 그림에서 비교할 때 유용하다.</p>
+    </div>
+
+    <!-- 누가빈도 / 누가백분율 -->
+    <div class="subsec">누가빈도 & 누가백분율</div>
+    <div class="pair-grid">
+      <div class="pair-card left">
+        <div class="pc-title">누가빈도 (Cumulative Frequency)</div>
+        <ul>
+          <li>가장 낮은 급간부터 순서대로 <strong>빈도를 누적</strong>해 나간 값이다.</li>
+          <li>특정 점수 이하의 사례가 몇 명인지를 알 수 있다.</li>
+          <li>맨 위 급간의 누가빈도 = 전체 사례수(N)</li>
+        </ul>
+      </div>
+      <div class="pair-card right">
+        <div class="pc-title">누가백분율 (Cumulative Percentage)</div>
+        <ul>
+          <li>누가빈도를 전체 사례수(N)로 나눈 후 <strong>100을 곱한 값</strong>이다.</li>
+          <li>특정 점수 이하에 전체의 몇 %가 위치하는지를 나타낸다.</li>
+          <li>백분위 계산의 기초가 된다.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="formula">
+      <div class="f-main">누가백분율(%) = (누가빈도 / 전체 사례수 N) × 100</div>
+    </div>
+
+    <div class="graph-box">
+      <div class="gb-label">표 10-3 — 누가빈도와 누가백분율을 포함한 빈도분포</div>
+      <p>빈도분포표에 누가빈도(cf)와 누가백분율(c%)을 추가한 확장 표이다. 이 표를 통해 특정 점수 이하의 사례 비율을 쉽게 파악할 수 있으며, 이후 백분위 산출에 직접 활용된다.</p>
+    </div>
+
+    <div class="graph-box">
+      <div class="gb-label">그림 10-3 — 누가백분율 곡선 (오자이브, Ogive)</div>
+      <p>각 급간의 정확 상한계와 누가백분율을 이용해 그린 S자 형태의 곡선이다. 특정 점수의 백분위를 그래프에서 직접 읽어낼 수 있으며, 점수와 백분위 사이의 관계를 시각적으로 보여준다.</p>
+    </div>
+
+    <div class="graph-box">
+      <div class="gb-label">그림 10-4 — 분포의 유형</div>
+      <p>빈도분포는 대칭적인 <strong>정상분포(종 모양)</strong> 외에도 점수가 낮은 쪽으로 치우친 <strong>부적 편포</strong>, 높은 쪽으로 치우친 <strong>정적 편포</strong> 등 다양한 형태를 가진다. 분포의 유형에 따라 집중경향치(최빈치·중앙치·평균치)의 상대적 위치가 달라진다.</p>
+    </div>
+  </section>
+
+  <!-- 6. 백분위 & 백분점수 -->
+  <section class="section" id="pct">
+    <div class="section-title"><span class="s-num">6</span>백분위 & 백분점수</div>
+
+    <div class="subsec">백분위 (Percentile Rank)</div>
+    <div class="card">
+      <p><span class="kw">백분위</span>란 한 집단에서 <strong>특정 점수보다 낮은 점수를 받은 사람의 비율(%)</strong>을 의미한다. 즉, 내 점수가 집단 전체에서 어느 위치에 있는지를 백분율로 나타낸 것이다.</p>
+      <div class="ex">
+        <div class="ex-label">예시</div>
+        <ul>
+          <li>백분위 80 → 집단의 80%가 나보다 낮은 점수를 받았다는 의미</li>
+          <li>누가백분율 곡선(그림 10-3)을 통해 특정 점수의 백분위를 그래프에서 직접 읽을 수 있다.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="subsec">백분점수 (Percentile Score / P)</div>
+    <div class="card">
+      <p><span class="kw">백분점수</span>란 특정 백분위에 해당하는 <strong>실제 점수값</strong>이다. 백분위와 반대 방향의 개념으로, 백분위가 "점수 → 순위"라면 백분점수는 "순위 → 점수"이다.</p>
+      <div class="ex">
+        <div class="ex-label">예시</div>
+        <ul>
+          <li>P₅₀ (50번째 백분점수) = 중앙치(Median)와 동일한 값</li>
+          <li>P₇₅ = 집단의 하위 75%에 해당하는 점수값</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="hl blue">
+      <div class="hl-title">백분위 vs 백분점수 비교</div>
+      <p style="font-size:13.5px;"><span class="kw">백분위</span>: 점수가 주어졌을 때 → 그 점수가 집단 내 몇 %에 해당하는지 (순위 표현)<br>
+      <span class="kw">백분점수</span>: 백분위가 주어졌을 때 → 그 백분위에 해당하는 실제 점수는 얼마인지 (점수 표현)</p>
+    </div>
+  </section>
+
+  <!-- 7. 집중경향치 -->
+  <section class="section" id="central">
+    <div class="section-title"><span class="s-num">7</span>집중경향치 (Measures of Central Tendency)</div>
+    <div class="card">
+      <p><span class="kw">집중경향치</span>란 자료 집단의 <strong>중심적 경향을 하나의 대표값으로 나타내는 통계치</strong>이다. 분포 전체를 단 하나의 숫자로 요약하는 방법으로, 최빈치·중앙치·평균치 세 가지가 있다.</p>
+    </div>
+
+    <div class="ct-grid">
+      <!-- 최빈치 -->
+      <div class="ct-card mode">
+        <div class="ct-head">최빈치 (Mode, Mo)</div>
+        <div class="ct-body">
+          <p>수집된 자료 집단에서 <strong>빈도수가 가장 많이 나타나는 값</strong>이다.</p>
+          <p style="margin-top:.5rem;"><strong>특징:</strong></p>
+          <ul style="padding-left:1.1rem;margin-top:.2rem;">
+            <li>계산이 가장 간단하다.</li>
+            <li>한 분포에 최빈치가 두 개 이상 존재할 수 있다.</li>
+            <li>극단값(이상치)의 영향을 받지 않는다.</li>
+            <li>편포된 분포에서는 대표성이 낮다.</li>
+          </ul>
+        </div>
+      </div>
+      <!-- 중앙치 -->
+      <div class="ct-card median">
+        <div class="ct-head">중앙치 (Median, Mdn)</div>
+        <div class="ct-body">
+          <p>자료를 크기 순서대로 나열했을 때 <strong>가장 중앙에 위치하는 값</strong>이다.</p>
+          <p style="margin-top:.5rem;"><strong>특징:</strong></p>
+          <ul style="padding-left:1.1rem;margin-top:.2rem;">
+            <li>사례수가 홀수이면 중간 값, 짝수이면 두 중간 값의 평균이다.</li>
+            <li>극단값(이상치)의 영향을 거의 받지 않는다.</li>
+            <li>편포된 분포의 대표값으로 적합하다.</li>
+            <li>P₅₀(50번째 백분점수)과 같다.</li>
+          </ul>
+        </div>
+      </div>
+      <!-- 평균치 -->
+      <div class="ct-card mean">
+        <div class="ct-head">평균치 (Mean, M / X̄)</div>
+        <div class="ct-body">
+          <p>한 집단의 <strong>모든 점수의 합을 사례수로 나눈 값</strong>이다.</p>
+          <div style="text-align:center;font-size:1rem;font-weight:700;color:var(--teal);margin:.5rem 0;">X̄ = ΣX / N</div>
+          <p style="margin-top:.3rem;"><strong>특징:</strong></p>
+          <ul style="padding-left:1.1rem;margin-top:.2rem;">
+            <li>가장 일반적으로 사용되는 집중경향치이다.</li>
+            <li>모든 점수를 반영하므로 정보 손실이 없다.</li>
+            <li>극단값(이상치)의 영향을 크게 받는다.</li>
+            <li>정상분포에서 가장 적합한 대표값이다.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="graph-box">
+      <div class="gb-label">그림 10-5 — 집중경향치를 나타내는 빈도분포의 유형</div>
+      <p><strong>정상분포</strong>에서는 최빈치 = 중앙치 = 평균치가 일치한다. <strong>정적 편포(오른쪽 꼬리)</strong>에서는 평균 &gt; 중앙치 &gt; 최빈치 순서이고, <strong>부적 편포(왼쪽 꼬리)</strong>에서는 최빈치 &gt; 중앙치 &gt; 평균 순서가 된다. 이 관계는 분포의 형태를 해석할 때 핵심 기준이 된다.</p>
+    </div>
+
+    <div class="hl amber">
+      <div class="hl-title">분포 형태에 따른 집중경향치 위치 (시험 빈출)</div>
+      <ul>
+        <li><span class="kw-amber">정상분포</span>: 최빈치 = 중앙치 = 평균치 (세 값이 일치)</li>
+        <li><span class="kw-red">정적 편포 (오른쪽 꼬리)</span>: 최빈치 &lt; 중앙치 &lt; 평균치</li>
+        <li><span class="kw-green">부적 편포 (왼쪽 꼬리)</span>: 평균치 &lt; 중앙치 &lt; 최빈치</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 8. 비교표 -->
+  <section class="section" id="compare">
+    <div class="section-title"><span class="s-num">8</span>핵심 개념 비교표</div>
+
+    <!-- 전집 vs 표본 -->
+    <div class="subsec">전집 vs 표본</div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>구분</th>
+            <th>전집 (Population)</th>
+            <th>표본 (Sample)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="label-cell">정의</td>
+            <td>한정된 집단의 전체 구성원</td>
+            <td>전집에서 선발된 일부 대상</td>
+          </tr>
+          <tr>
+            <td class="label-cell">목적</td>
+            <td>최종 결론을 내리려는 대상 전체</td>
+            <td>전집을 추정하기 위해 실제 조사</td>
+          </tr>
+          <tr>
+            <td class="label-cell">크기</td>
+            <td>전체 (N)</td>
+            <td>일부 (n, N보다 작음)</td>
+          </tr>
+          <tr>
+            <td class="label-cell">조사 방법</td>
+            <td>전수조사 (현실적으로 어려운 경우 많음)</td>
+            <td>표본조사 (실제 연구에서 주로 사용)</td>
+          </tr>
+          <tr>
+            <td class="label-cell">통계치 명칭</td>
+            <td>모수(Parameter)</td>
+            <td>통계치(Statistic)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 빈도분포 구성 개념 -->
+    <div class="subsec">빈도분포 핵심 개념 비교</div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>개념</th>
+            <th>정의</th>
+            <th>핵심 포인트</th>
+            <th>예시</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="label-cell">점수범위</td>
+            <td>최고점 − 최저점</td>
+            <td>급간의 수·크기 결정의 기초</td>
+            <td>최고 80, 최저 30 → 범위 50</td>
+          </tr>
+          <tr>
+            <td class="label-cell">급간의 크기</td>
+            <td>각 급간이 포함하는 점수 범위</td>
+            <td>급간 수 10~15개 유지; 홀수 권장</td>
+            <td>크기 5: 25~29, 30~34 …</td>
+          </tr>
+          <tr>
+            <td class="label-cell">점수한계 (Apparent Limits)</td>
+            <td>기록된 급간의 하한~상한</td>
+            <td>맨 아래 하한계는 급간 크기의 배수</td>
+            <td>25~29</td>
+          </tr>
+          <tr>
+            <td class="label-cell">정확한계 (Exact Limits)</td>
+            <td>측정값 ±0.5로 확장한 실제 경계</td>
+            <td>연속 변인 가정; 하한−0.5, 상한+0.5</td>
+            <td>25~29 → 24.5~29.5</td>
+          </tr>
+          <tr>
+            <td class="label-cell">누가빈도</td>
+            <td>아래부터 빈도를 누적한 값</td>
+            <td>최상위 급간 누가빈도 = 전체 N</td>
+            <td>f: 3, 5, 7 → cf: 3, 8, 15</td>
+          </tr>
+          <tr>
+            <td class="label-cell">누가백분율</td>
+            <td>(누가빈도 / N) × 100</td>
+            <td>백분위 산출의 기초 자료</td>
+            <td>cf 8, N 20 → c% 40%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 집중경향치 비교 -->
+    <div class="subsec">집중경향치 3가지 비교</div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>구분</th>
+            <th>최빈치 (Mode)</th>
+            <th>중앙치 (Median)</th>
+            <th>평균치 (Mean)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="label-cell">정의</td>
+            <td>빈도가 가장 많은 값</td>
+            <td>크기 순서 중앙의 값</td>
+            <td>점수 합 ÷ 사례수</td>
+          </tr>
+          <tr>
+            <td class="label-cell">계산법</td>
+            <td>빈도 확인</td>
+            <td>순서 나열 후 중간값</td>
+            <td>ΣX / N</td>
+          </tr>
+          <tr>
+            <td class="label-cell">이상치 영향</td>
+            <td>없음</td>
+            <td>거의 없음</td>
+            <td>크게 받음</td>
+          </tr>
+          <tr>
+            <td class="label-cell">적합한 분포</td>
+            <td>단순 최빈값 파악 시</td>
+            <td>편포·이상치 있을 때</td>
+            <td>정상분포</td>
+          </tr>
+          <tr>
+            <td class="label-cell">사용 빈도</td>
+            <td>낮음</td>
+            <td>중간</td>
+            <td>가장 높음</td>
+          </tr>
+          <tr>
+            <td class="label-cell">정상분포에서</td>
+            <td colspan="3" class="center">세 값 모두 일치</td>
+          </tr>
+          <tr>
+            <td class="label-cell">정적 편포에서</td>
+            <td>가장 작음</td>
+            <td>중간</td>
+            <td>가장 큼</td>
+          </tr>
+          <tr>
+            <td class="label-cell">부적 편포에서</td>
+            <td>가장 큼</td>
+            <td>중간</td>
+            <td>가장 작음</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 9. 시험 포인트 -->
+  <section class="section" id="exam">
+    <div class="section-title"><span class="s-num">9</span>시험 포인트 정리</div>
+    <div class="exam-grid">
+      <div class="exam-item">
+        <div class="e-q">Q. 통계의 두 가지 핵심 기능은?</div>
+        <div class="e-a">① 요약·기술 기능 (자료를 간결하게 요약)<br>② 추론·예측 기능 (관찰 결과로 일반적 결론 도출)</div>
+      </div>
+      <div class="exam-item">
+        <div class="e-q">Q. 변인이란?</div>
+        <div class="e-a">연구 대상 개체들이 집단별로 서로 다른 값을 갖거나 개체를 구별할 수 있는 속성이나 특징. 측정 대상마다 값이 달라질 수 있는 것.</div>
+      </div>
+      <div class="exam-item">
+        <div class="e-q">Q. 전집과 표본의 차이는?</div>
+        <div class="e-a">전집 = 집단의 전체 구성원 / 표본 = 전집에서 선발된 일부. 표본 조사 결과로 전집을 추론하는 것이 통계의 목적.</div>
+      </div>
+      <div class="exam-item">
+        <div class="e-q">Q. 급간의 수는 몇 개로 제한하는가?</div>
+        <div class="e-a">통상 10~15개. 급간 수가 많을수록 오차는 적지만 계산이 복잡해진다.</div>
+      </div>
+      <div class="exam-item">
+        <div class="e-q">Q. 정확한계란? 예시를 들어 설명하라.</div>
+        <div class="e-a">연속 변인 측정 시 오차를 반영하여 측정값 ±0.5로 경계를 설정한 것. 40점의 정확한계 = 39.5~40.5. 급간 25~29의 정확한계 = 24.5~29.5.</div>
+      </div>
+      <div class="exam-item">
+        <div class="e-q">Q. 누가백분율 공식은?</div>
+        <div class="e-a">(누가빈도 / 전체 사례수 N) × 100. 특정 점수 이하에 전체의 몇 %가 위치하는지를 나타낸다.</div>
+      </div>
+      <div class="exam-item">
+        <div class="e-q">Q. 백분위와 백분점수의 차이는?</div>
+        <div class="e-a">백분위 = 특정 점수보다 낮은 사람의 비율(%) / 백분점수 = 특정 백분위에 해당하는 실제 점수값.</div>
+      </div>
+      <div class="exam-item">
+        <div class="e-q">Q. 최빈치·중앙치·평균치 중 이상치 영향을 가장 크게 받는 것은?</div>
+        <div class="e-a">평균치(Mean). 모든 점수를 합산하므로 극단값 하나가 평균을 크게 왜곡할 수 있다.</div>
+      </div>
+      <div class="exam-item">
+        <div class="e-q">Q. 정적 편포에서 집중경향치 크기 순서는?</div>
+        <div class="e-a">최빈치 &lt; 중앙치 &lt; 평균치. 오른쪽 꼬리(높은 점수 방향)로 분포가 치우칠수록 평균이 가장 크게 오른쪽으로 이동한다.</div>
+      </div>
+      <div class="exam-item">
+        <div class="e-q">Q. 편포 분포에서 대표값으로 가장 적합한 집중경향치는?</div>
+        <div class="e-a">중앙치(Median). 이상치의 영향을 거의 받지 않아 편포나 이상치가 있을 때 평균보다 더 안정적인 대표값이다.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. 암기 체크리스트 -->
+  <section class="section" id="checklist">
+    <div class="section-title"><span class="s-num">10</span>암기 체크리스트 (시험 직전 확인)</div>
+    <div class="card">
+      <p style="font-size:13px;color:var(--gray-mid);margin-bottom:.9rem;">스스로 설명할 수 있으면 체크하세요.</p>
+      <ul class="checklist">
+        <li><input type="checkbox" /><span>통계의 정의를 한 문장으로 설명할 수 있다.</span></li>
+        <li><input type="checkbox" /><span>통계의 두 가지 핵심 기능(요약·기술 / 추론·예측)을 구분하여 말할 수 있다.</span></li>
+        <li><input type="checkbox" /><span>변인의 정의를 예시를 들어 설명할 수 있다.</span></li>
+        <li><input type="checkbox" /><span>전집과 표본의 차이를 구분하여 설명할 수 있다.</span></li>
+        <li><input type="checkbox" /><span>빈도분포에서 급간의 수 기준(10~15개)을 말할 수 있다.</span></li>
+        <li><input type="checkbox" /><span>급간의 크기 결정 방법을 설명할 수 있다.</span></li>
+        <li><input type="checkbox" /><span>점수한계와 정확한계의 차이를 설명할 수 있다.</span></li>
+        <li><input type="checkbox" /><span>정확한계를 예시(40점 → 39.5~40.5)를 들어 설명할 수 있다.</span></li>
+        <li><input type="checkbox" /><span>정확한계가 연속적 변인 가정에 근거함을 설명할 수 있다.</span></li>
+        <li><input type="checkbox" /><span>누가빈도와 누가백분율의 차이를 설명할 수 있다.</span></li>
+        <li><input type="checkbox" /><span>누가백분율 공식을 말할 수 있다.</span></li>
+        <li><input type="checkbox" /><span>백분위와 백분점수의 개념 차이를 설명할 수 있다.</span></li>
+        <li><input type="checkbox" /><span>최빈치·중앙치·평균치 각각의 정의를 말할 수 있다.</span></li>
+        <li><input type="checkbox" /><span>세 집중경향치 중 이상치의 영향을 가장 크게 받는 것을 말할 수 있다.</span></li>
+        <li><input type="checkbox" /><span>정상분포에서 세 집중경향치의 관계를 설명할 수 있다.</span></li>
+        <li><input type="checkbox" /><span>정적/부적 편포에서 최빈치·중앙치·평균치의 크기 순서를 말할 수 있다.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 11. 전체 요약 -->
+  <section class="section" id="summary">
+    <div class="section-title"><span class="s-num">11</span>전체 요약</div>
+    <div class="summary-box">
+      <h3>이 범위의 핵심은 무엇인가?</h3>
+      <ul>
+        <li><span class="sh">통계의 본질:</span> 집단 자료를 요약·기술하고, 관찰 결과로 일반적 결론을 추론하는 도구. 두 기능(기술·추론)을 구분할 수 있어야 한다.</li>
+        <li><span class="sh">전집 vs 표본:</span> 전집은 전체 대상, 표본은 그 일부. 표본으로 전집을 추론하는 것이 통계의 핵심 원리.</li>
+        <li><span class="sh">빈도분포 5단계:</span> ① 점수범위 파악 → ② 급간 크기 결정(10~15개) → ③ 점수한계 설정 → ④ 정확한계 계산(±0.5) → ⑤ 빈도·누가빈도·누가백분율 기입</li>
+        <li><span class="sh">정확한계 핵심:</span> 40점 = 39.5~40.5. 연속 변인의 측정 오차를 반영. 백분위 계산의 기초.</li>
+        <li><span class="sh">백분위 vs 백분점수:</span> 백분위 = 점수 → 비율(%) / 백분점수 = 비율(%) → 점수값. P₅₀ = 중앙치.</li>
+        <li><span class="sh">집중경향치 3총사:</span> 최빈치(빈도 최대) / 중앙치(순서 중간, 이상치에 강함) / 평균치(합÷N, 이상치에 약함)</li>
+        <li><span class="sh">편포와 집중경향치:</span> 정상분포 = 세 값 일치 / 정적 편포 = Mo &lt; Mdn &lt; M / 부적 편포 = M &lt; Mdn &lt; Mo</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CHAPTER NAV -->
+  <div class="chapter-nav">
+    <a href="../ch2/">
+      <span>
+        <span class="ch-sub">이전 단원</span><br>
+        ← 2단원 — 측정변인과 검사의 질
+      </span>
+    </a>
+  </div>
+
+  <hr />
+  <p style="text-align:center;font-size:12px;color:#aaa;">건강체력측정평가 복습 정리노트 · PDF 31~45p 기준 · 3단원</p>
+
+</div><!-- /wrapper -->
+
+<script>
+  (function() {
+    var boxes = document.querySelectorAll('.checklist input[type="checkbox"]');
+    boxes.forEach(function(box, i) {
+      var key = 'ch3_chk_' + i;
+      box.checked = localStorage.getItem(key) === '1';
+      box.addEventListener('change', function() {
+        localStorage.setItem(key, this.checked ? '1' : '0');
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
