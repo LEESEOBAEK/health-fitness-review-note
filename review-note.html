@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>건강체력측정평가 — 복습 정리노트</title>
+  <style>
+    /* ===== FONT ===== */
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap');
+
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary:    #2c5f8a;
+      --primary-lt: #e8f1f8;
+      --accent:     #c0392b;
+      --accent-lt:  #fdf0ee;
+      --green:      #1e7e5a;
+      --green-lt:   #eaf5f0;
+      --yellow:     #b8860b;
+      --yellow-lt:  #fdf8e1;
+      --gray-dark:  #2d2d2d;
+      --gray-mid:   #555;
+      --gray-light: #f4f6f8;
+      --border:     #d8dee6;
+      --text:       #222;
+      --radius:     8px;
+      --shadow:     0 2px 10px rgba(0,0,0,.07);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', 'Pretendard', sans-serif;
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--text);
+      background: #f0f3f7;
+    }
+
+    /* ===== NAV ===== */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--primary);
+      box-shadow: 0 2px 8px rgba(0,0,0,.2);
+    }
+    .nav-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0;
+      flex-wrap: wrap;
+    }
+    .nav-brand {
+      color: #fff;
+      font-weight: 700;
+      font-size: 13px;
+      padding: .65rem 1rem .65rem 0;
+      margin-right: .5rem;
+      border-right: 1px solid rgba(255,255,255,.3);
+      white-space: nowrap;
+    }
+    nav a {
+      color: rgba(255,255,255,.85);
+      text-decoration: none;
+      font-size: 12.5px;
+      padding: .65rem .75rem;
+      transition: background .15s;
+      white-space: nowrap;
+    }
+    nav a:hover { background: rgba(255,255,255,.15); color: #fff; }
+
+    /* ===== WRAPPER ===== */
+    .wrapper {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 4rem;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      background: linear-gradient(135deg, #1a3f5c 0%, #2c5f8a 60%, #3b7ab0 100%);
+      color: #fff;
+      padding: 2.8rem 2rem 2.2rem;
+      border-radius: var(--radius);
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow);
+    }
+    header .tag {
+      display: inline-block;
+      background: rgba(255,255,255,.18);
+      border: 1px solid rgba(255,255,255,.35);
+      border-radius: 20px;
+      font-size: 12px;
+      padding: .2rem .9rem;
+      margin-bottom: 1rem;
+      letter-spacing: .05em;
+    }
+    header h1 {
+      font-size: clamp(1.5rem, 4vw, 2.2rem);
+      font-weight: 700;
+      margin-bottom: .4rem;
+      line-height: 1.3;
+    }
+    header .subtitle {
+      font-size: 14px;
+      opacity: .8;
+      margin-bottom: 1.1rem;
+    }
+    header .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      font-size: 12.5px;
+    }
+    header .meta span {
+      background: rgba(255,255,255,.15);
+      border-radius: 4px;
+      padding: .2rem .75rem;
+    }
+
+    /* ===== SECTION TITLES ===== */
+    .section {
+      margin-bottom: 2.5rem;
+    }
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--primary);
+      border-bottom: 2.5px solid var(--primary);
+      padding-bottom: .45rem;
+      margin-bottom: 1.2rem;
+    }
+    .section-title .icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px; height: 28px;
+      background: var(--primary);
+      color: #fff;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .subsection-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--gray-dark);
+      margin: 1.4rem 0 .6rem;
+      padding-left: .75rem;
+      border-left: 4px solid var(--primary);
+    }
+
+    /* ===== CARDS ===== */
+    .card {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 1.25rem 1.4rem;
+      box-shadow: var(--shadow);
+      margin-bottom: 1rem;
+    }
+
+    /* ===== OBJECTIVE BOX ===== */
+    .objective-box {
+      background: var(--primary-lt);
+      border: 1.5px solid #b3cde3;
+      border-left: 5px solid var(--primary);
+      border-radius: var(--radius);
+      padding: 1.2rem 1.5rem;
+      margin-bottom: 1.2rem;
+    }
+    .objective-box ol {
+      padding-left: 1.4rem;
+      display: flex;
+      flex-direction: column;
+      gap: .4rem;
+    }
+    .objective-box li { font-weight: 500; }
+
+    /* ===== CONCEPT CARDS (측정/검사/평가) ===== */
+    .concept-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .concept-card {
+      border-radius: var(--radius);
+      padding: 1.1rem 1.2rem;
+      box-shadow: var(--shadow);
+    }
+    .concept-card.blue  { background: var(--primary-lt); border-top: 4px solid var(--primary); }
+    .concept-card.red   { background: var(--accent-lt);  border-top: 4px solid var(--accent);  }
+    .concept-card.green { background: var(--green-lt);   border-top: 4px solid var(--green);   }
+
+    .concept-card .c-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: .3rem;
+    }
+    .concept-card.blue  .c-label { color: var(--primary); }
+    .concept-card.red   .c-label { color: var(--accent);  }
+    .concept-card.green .c-label { color: var(--green);   }
+
+    .concept-card .c-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: .5rem;
+    }
+    .concept-card p { font-size: 13.5px; line-height: 1.7; color: var(--gray-mid); }
+
+    /* ===== EXAMPLE BOX ===== */
+    .ex-box {
+      background: #f8f9fb;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: .75rem 1rem;
+      margin-top: .6rem;
+      font-size: 13.5px;
+    }
+    .ex-box .ex-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: .05em;
+      margin-bottom: .3rem;
+    }
+    .ex-box ul { padding-left: 1.2rem; }
+    .ex-box li { margin-bottom: .15rem; }
+
+    /* ===== KEYWORD ===== */
+    .kw { font-weight: 700; color: var(--primary); }
+    .kw-red { font-weight: 700; color: var(--accent); }
+    .kw-green { font-weight: 700; color: var(--green); }
+
+    /* ===== PURPOSE GRID ===== */
+    .purpose-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: .85rem;
+    }
+    .purpose-item {
+      background: #fff;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: 1rem 1.1rem;
+      box-shadow: var(--shadow);
+      display: flex;
+      gap: .75rem;
+      align-items: flex-start;
+    }
+    .purpose-num {
+      flex-shrink: 0;
+      width: 28px; height: 28px;
+      background: var(--primary);
+      color: #fff;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .purpose-item .p-title { font-weight: 700; font-size: 14px; margin-bottom: .2rem; }
+    .purpose-item .p-desc  { font-size: 12.5px; color: var(--gray-mid); line-height: 1.6; }
+
+    /* ===== COMPARE TABLE ===== */
+    .table-wrap { overflow-x: auto; margin-bottom: 1.2rem; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+      background: #fff;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    thead th {
+      background: var(--primary);
+      color: #fff;
+      font-weight: 700;
+      padding: .75rem 1rem;
+      text-align: center;
+      white-space: nowrap;
+    }
+    tbody td {
+      padding: .7rem 1rem;
+      border-bottom: 1px solid #eef0f3;
+      text-align: center;
+      vertical-align: middle;
+    }
+    tbody tr:last-child td { border-bottom: none; }
+    tbody tr:nth-child(even) { background: #f8f9fb; }
+    td.label-cell {
+      font-weight: 700;
+      color: var(--primary);
+      text-align: left;
+      white-space: nowrap;
+    }
+    td.accent-cell { color: var(--accent); font-weight: 600; }
+    td.green-cell  { color: var(--green);  font-weight: 600; }
+
+    /* ===== HIGHLIGHT BOXES ===== */
+    .hl-box {
+      border-radius: var(--radius);
+      padding: 1.1rem 1.4rem;
+      margin-bottom: 1rem;
+      box-shadow: var(--shadow);
+    }
+    .hl-box.yellow {
+      background: var(--yellow-lt);
+      border-left: 5px solid var(--yellow);
+    }
+    .hl-box.red {
+      background: var(--accent-lt);
+      border-left: 5px solid var(--accent);
+    }
+    .hl-box.green {
+      background: var(--green-lt);
+      border-left: 5px solid var(--green);
+    }
+    .hl-box.blue {
+      background: var(--primary-lt);
+      border-left: 5px solid var(--primary);
+    }
+    .hl-box .hl-title {
+      font-weight: 700;
+      font-size: 14px;
+      margin-bottom: .5rem;
+    }
+    .hl-box.yellow .hl-title { color: var(--yellow); }
+    .hl-box.red    .hl-title { color: var(--accent); }
+    .hl-box.green  .hl-title { color: var(--green);  }
+    .hl-box.blue   .hl-title { color: var(--primary); }
+    .hl-box ol, .hl-box ul { padding-left: 1.4rem; }
+    .hl-box li { margin-bottom: .25rem; font-size: 13.5px; }
+
+    /* ===== EXAM POINTS ===== */
+    .exam-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: .85rem;
+    }
+    .exam-item {
+      background: #fff;
+      border: 1px solid #e0d4cf;
+      border-top: 3px solid var(--accent);
+      border-radius: var(--radius);
+      padding: 1rem 1.1rem;
+      box-shadow: var(--shadow);
+    }
+    .exam-item .e-q {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: .4rem;
+    }
+    .exam-item .e-a {
+      font-size: 13px;
+      color: var(--gray-dark);
+      line-height: 1.65;
+    }
+
+    /* ===== CHECKLIST ===== */
+    .checklist {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: .5rem;
+      list-style: none;
+      padding: 0;
+    }
+    .checklist li {
+      display: flex;
+      align-items: flex-start;
+      gap: .6rem;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: .6rem .85rem;
+      font-size: 13.5px;
+      box-shadow: var(--shadow);
+    }
+    .checklist li input[type="checkbox"] {
+      margin-top: .2rem;
+      accent-color: var(--primary);
+      width: 15px; height: 15px;
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+
+    /* ===== HISTORY TIMELINE ===== */
+    .timeline {
+      position: relative;
+      padding-left: 1.8rem;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: .45rem;
+      top: 0; bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--primary), #b3cde3);
+      border-radius: 2px;
+    }
+    .tl-item {
+      position: relative;
+      margin-bottom: 1rem;
+    }
+    .tl-item::before {
+      content: '';
+      position: absolute;
+      left: -1.42rem;
+      top: .45rem;
+      width: 12px; height: 12px;
+      background: var(--primary);
+      border-radius: 50%;
+      border: 2px solid #fff;
+      box-shadow: 0 0 0 2px var(--primary);
+    }
+    .tl-item .tl-year {
+      font-weight: 700;
+      color: var(--primary);
+      font-size: 14px;
+    }
+    .tl-item .tl-desc {
+      font-size: 13.5px;
+      color: var(--gray-mid);
+      margin-top: .1rem;
+    }
+
+    /* ===== SUMMARY BOX ===== */
+    .summary-box {
+      background: linear-gradient(135deg, #1a3f5c 0%, #2c5f8a 100%);
+      color: #fff;
+      border-radius: var(--radius);
+      padding: 1.8rem 2rem;
+      box-shadow: var(--shadow);
+    }
+    .summary-box h3 {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid rgba(255,255,255,.3);
+      padding-bottom: .6rem;
+    }
+    .summary-box ul {
+      padding-left: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: .4rem;
+    }
+    .summary-box li { font-size: 13.5px; line-height: 1.7; opacity: .93; }
+    .summary-box .s-highlight { color: #ffe066; font-weight: 700; }
+
+    /* ===== DIVIDER ===== */
+    hr { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
+
+    /* ===== PRINT ===== */
+    @media print {
+      nav { display: none; }
+      body { background: #fff; font-size: 13px; }
+      .wrapper { padding: 0; max-width: 100%; }
+      header { background: #1a3f5c !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .card, .concept-card, .purpose-item, .exam-item, .hl-box { box-shadow: none; border: 1px solid #ccc; }
+      .summary-box { background: #1a3f5c !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+
+    @media (max-width: 600px) {
+      header { padding: 1.8rem 1.2rem 1.5rem; }
+      .wrapper { padding: 1rem .75rem 3rem; }
+      .nav-inner { gap: 0; }
+      nav a { padding: .55rem .5rem; font-size: 11.5px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <span class="nav-brand">건강체력측정평가</span>
+    <a href="#objectives">학습목표</a>
+    <a href="#overview">개요</a>
+    <a href="#purposes">목적</a>
+    <a href="#conditions">조건</a>
+    <a href="#compare">비교표</a>
+    <a href="#exam">시험포인트</a>
+    <a href="#checklist">체크리스트</a>
+    <a href="#summary">전체요약</a>
+  </div>
+</nav>
+
+<div class="wrapper">
+
+  <!-- HEADER -->
+  <header>
+    <div class="tag">Exercise Prescription · 체육측정평가</div>
+    <h1>건강체력측정평가</h1>
+    <p class="subtitle">수업 복습 및 시험 대비 정리노트</p>
+    <div class="meta">
+      <span>학습 범위: PDF 1~15페이지</span>
+      <span>측정 / 검사 / 평가 · 목적 10가지 · 타당도·신뢰도·객관성</span>
+    </div>
+  </header>
+
+  <!-- 1. 학습목표 -->
+  <section class="section" id="objectives">
+    <div class="section-title">
+      <span class="icon">1</span>학습목표
+    </div>
+    <div class="objective-box">
+      <ol>
+        <li>체육 측정과 평가의 <span class="kw">개념(측정·검사·평가의 차이)</span>을 이해한다.</li>
+        <li>체육 측정평가의 <span class="kw">목적(10가지)과 조건(타당도·신뢰도·객관성·규준·경제성)</span>을 이해한다.</li>
+        <li>체육 측정평가의 <span class="kw">역사적 흐름과 영역</span>을 이해한다.</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 2. 개요 -->
+  <section class="section" id="overview">
+    <div class="section-title">
+      <span class="icon">2</span>측정과 평가의 개요
+    </div>
+
+    <div class="card">
+      <p>체육 측정평가는 신체활동과 관련된 특성을 <span class="kw">수치로 측정</span>하고, 그 결과를 <span class="kw">해석</span>하여 개인의 능력·교육 효과·운동 프로그램의 성과 등을 <span class="kw">판단하는 종합적 과정</span>이다. 단순히 숫자를 재는 것에서 끝나지 않고, 그 숫자에 의미를 부여하고 판단까지 이어지는 것이 핵심이다.</p>
+    </div>
+
+    <!-- 측정 / 검사 / 평가 카드 -->
+    <div class="concept-grid">
+      <!-- 측정 -->
+      <div class="concept-card blue">
+        <div class="c-label">Measurement</div>
+        <div class="c-title">측정 (測定)</div>
+        <p>어떤 대상의 특성을 관찰하여 <strong>수치(숫자)로 표현</strong>하는 과정이다. 가장 기초 단계이며, 결과는 단순한 숫자 형태이다.</p>
+        <div class="ex-box">
+          <div class="ex-label">예시</div>
+          <ul>
+            <li>키 · 몸무게 · 체지방률</li>
+            <li>최대산소섭취량(VO₂max)</li>
+          </ul>
+        </div>
+      </div>
+      <!-- 검사 -->
+      <div class="concept-card red">
+        <div class="c-label">Test</div>
+        <div class="c-title">검사 (檢査)</div>
+        <p>측정을 수행하기 위한 <strong>절차·도구·방법</strong>이다. 일정한 조건을 설정하고 그 조건 아래에서 대상을 관찰한다.</p>
+        <div class="ex-box">
+          <div class="ex-label">예시</div>
+          <ul>
+            <li>최대산소섭취량 검사</li>
+            <li>1,000m 달리기 검사</li>
+            <li>체력 검사</li>
+          </ul>
+        </div>
+      </div>
+      <!-- 평가 -->
+      <div class="concept-card green">
+        <div class="c-label">Evaluation</div>
+        <div class="c-title">평가 (評價)</div>
+        <p>측정·검사로 얻은 자료를 <strong>해석하고 가치 판단</strong>을 내리는 과정이다. 질적 설명 + 양적 분석 + 가치 판단을 모두 포함한다.</p>
+        <div class="ex-box">
+          <div class="ex-label">포함 요소</div>
+          <ul>
+            <li>질적 설명 (어떤 상태인가?)</li>
+            <li>양적 분석 (어느 수준인가?)</li>
+            <li>가치 판단 (좋은가? 나쁜가?)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="hl-box blue" style="margin-top:.5rem;">
+      <div class="hl-title">핵심 관계 정리</div>
+      <p style="font-size:13.5px;">
+        <span class="kw">검사</span>(도구·절차) → <span class="kw">측정</span>(숫자 획득) → <span class="kw">평가</span>(해석·가치 판단)<br>
+        예: <em>최대산소섭취량 검사</em>를 통해 <em>측정</em>을 하고, 그 수치를 바탕으로 심폐지구력을 <em>평가</em>한다.
+      </p>
+    </div>
+  </section>
+
+  <!-- 3. 측정과 평가의 목적 -->
+  <section class="section" id="purposes">
+    <div class="section-title">
+      <span class="icon">3</span>측정과 평가의 목적 (10가지)
+    </div>
+    <div class="card" style="margin-bottom:1rem;">
+      <p style="font-size:13.5px;">체육 측정과 평가는 단순히 점수를 매기기 위한 것이 아니라 아래 10가지 목적을 위해 활용된다. <span class="kw-red">시험에 자주 출제되는 핵심 항목</span>이므로 각 목적의 명칭과 의미를 함께 암기한다.</p>
+    </div>
+    <div class="purpose-grid">
+      <div class="purpose-item">
+        <div class="purpose-num">1</div>
+        <div>
+          <div class="p-title">동기부여 <small style="font-weight:400;color:#888;">(Motivation)</small></div>
+          <div class="p-desc">측정 결과가 운동 참여 의욕을 자극한다. 예: 체지방·피부두겹두께·스포츠 수행 능력 평가 결과를 보고 스스로 동기를 얻는다.</div>
+        </div>
+      </div>
+      <div class="purpose-item">
+        <div class="purpose-num">2</div>
+        <div>
+          <div class="p-title">성취도 확인 <small style="font-weight:400;color:#888;">(Achievement)</small></div>
+          <div class="p-desc">운동 프로그램에 참여한 후 목표 대비 얼마나 달성했는지 확인한다.</div>
+        </div>
+      </div>
+      <div class="purpose-item">
+        <div class="purpose-num">3</div>
+        <div>
+          <div class="p-title">향상 <small style="font-weight:400;color:#888;">(Improvement)</small></div>
+          <div class="p-desc">측정 결과를 바탕으로 개인 능력에 맞는 운동 처방·훈련 방법을 개선한다.</div>
+        </div>
+      </div>
+      <div class="purpose-item">
+        <div class="purpose-num">4</div>
+        <div>
+          <div class="p-title">진단 <small style="font-weight:400;color:#888;">(Diagnosis)</small></div>
+          <div class="p-desc">개인의 약점·문제점을 파악한다. 예: 체력 부족 요소 확인, 운동 프로그램 실패 원인 분석.</div>
+        </div>
+      </div>
+      <div class="purpose-item">
+        <div class="purpose-num">5</div>
+        <div>
+          <div class="p-title">처방 <small style="font-weight:400;color:#888;">(Prescription)</small></div>
+          <div class="p-desc">측정 결과를 기반으로 적절한 운동 프로그램을 설계한다. 예: 성인병 예방 운동 처방, 체력 향상 프로그램.</div>
+        </div>
+      </div>
+      <div class="purpose-item">
+        <div class="purpose-num">6</div>
+        <div>
+          <div class="p-title">점수부여 <small style="font-weight:400;color:#888;">(Grading)</small></div>
+          <div class="p-desc">운동 능력을 평가하고 성적·등급을 산출하기 위해 측정을 실시한다.</div>
+        </div>
+      </div>
+      <div class="purpose-item">
+        <div class="purpose-num">7</div>
+        <div>
+          <div class="p-title">학습지도 평가 <small style="font-weight:400;color:#888;">(Evaluation of Unit)</small></div>
+          <div class="p-desc">학습 목표 달성 여부를 측정 결과로 평가한다. 교수·학습 과정의 효과를 확인하는 데 활용된다.</div>
+        </div>
+      </div>
+      <div class="purpose-item">
+        <div class="purpose-num">8</div>
+        <div>
+          <div class="p-title">프로그램 평가 <small style="font-weight:400;color:#888;">(Evaluation of Program)</small></div>
+          <div class="p-desc">교육·운동 프로그램 전체의 효과를 측정 결과로 검증하고 개선 방향을 도출한다.</div>
+        </div>
+      </div>
+      <div class="purpose-item">
+        <div class="purpose-num">9</div>
+        <div>
+          <div class="p-title">분류 <small style="font-weight:400;color:#888;">(Classification)</small></div>
+          <div class="p-desc">측정 결과에 따라 개인을 유사한 특성의 집단으로 묶어 지도 효율을 높인다.</div>
+        </div>
+      </div>
+      <div class="purpose-item">
+        <div class="purpose-num">10</div>
+        <div>
+          <div class="p-title">예측 <small style="font-weight:400;color:#888;">(Prediction)</small></div>
+          <div class="p-desc">현재 측정 자료로 미래 능력을 예측한다. 예: 최대산소섭취량, 체지방률, 폐기능 예측.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. 측정과 평가의 조건 -->
+  <section class="section" id="conditions">
+    <div class="section-title">
+      <span class="icon">4</span>측정과 평가의 조건
+    </div>
+    <div class="card">
+      <p style="font-size:13.5px;">좋은 측정·평가가 되려면 다음 5가지 조건을 충족해야 한다: <span class="kw">타당도 · 신뢰도 · 객관성 · 규준 · 경제성</span></p>
+    </div>
+
+    <!-- 타당도 -->
+    <div class="subsection-title">타당도 (Validity)</div>
+    <div class="card">
+      <p><span class="kw">타당도</span>란 측정 도구·방법이 <strong>검사 목적과 얼마나 일치하는지</strong>를 나타내는 개념이다. 즉, "내가 측정하려는 것을 실제로 측정하고 있는가?"에 대한 답이다.</p>
+      <div class="ex-box" style="margin-top:.8rem;">
+        <div class="ex-label">예시 — 1,000m 달리기와 지구력 측정</div>
+        <ul>
+          <li><span class="kw-green">타당도 높음</span>: 1,000m 달리기가 실제로 유산소 지구력을 측정한다면 → 지구력 검사로서 타당하다.</li>
+          <li><span class="kw-red">타당도 낮음</span>: 1,000m 달리기가 순발력·속도만 반영된다면 → 지구력 검사로서 타당하지 않다.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 신뢰도 -->
+    <div class="subsection-title">신뢰도 (Reliability)</div>
+    <div class="card">
+      <p><span class="kw">신뢰도</span>란 <strong>동일한 조건에서 반복 측정했을 때 동일한 결과가 나타나는 정도</strong>이다. "같은 상황에서 측정하면 항상 비슷한 값이 나오는가?"가 핵심이다.</p>
+      <div class="ex-box" style="margin-top:.8rem;">
+        <div class="ex-label">예시 — 체중 반복 측정</div>
+        <ul>
+          <li>1차: 60.0 kg / 2차: 59.8 kg / 3차: 60.1 kg → <span class="kw-green">신뢰도 높음</span> (오차 범위 내)</li>
+          <li>1차: 60.0 kg / 2차: 58.8 kg / 3차: 57.8 kg → <span class="kw-red">신뢰도 낮음</span> (편차가 큼)</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 객관성 -->
+    <div class="subsection-title">객관성 (Objectivity)</div>
+    <div class="card">
+      <p><span class="kw">객관성</span>이란 <strong>서로 다른 측정자가 동일한 대상을 측정했을 때 동일한 결과가 나타나는 정도</strong>이다. 측정자 간 일관성이라고도 할 수 있다.</p>
+      <div class="ex-box" style="margin-top:.8rem;">
+        <div class="ex-label">예시</div>
+        <ul>
+          <li>측정자 A → 60 kg / 측정자 B → 60 kg → <span class="kw-green">객관성 높음</span></li>
+          <li>측정자 A → 60 kg / 측정자 B → 63 kg → <span class="kw-red">객관성 낮음</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 규준 -->
+    <div class="subsection-title">규준 (Norm)</div>
+    <div class="hl-box yellow">
+      <div class="hl-title">규준이란?</div>
+      <p style="font-size:13.5px;margin-bottom:.7rem;">측정이 끝난 후 <strong>성적을 평가할 때 기준이 되는 참고 자료</strong>이다. 쉽게 말해, 내 점수가 전체에서 어느 위치인지 비교하는 척도이다.</p>
+      <div class="hl-title" style="margin-top:.8rem;">규준 작성 시 유의사항 (시험 출제 포인트)</div>
+      <ol>
+        <li>가능한 한 <strong>광범위한 측정치</strong>를 기초로 작성한다 — 표본이 클수록 규준의 신뢰성이 높아진다.</li>
+        <li>규준을 적용할 때는 <strong>규준 작성에 활용된 대상 범위로 제한</strong>한다 — 다른 집단에 무분별하게 적용하면 안 된다.</li>
+        <li>규준은 <strong>시간·대상자의 능력 변화에 따라 수정</strong>해야 한다 — 사회 평균 체력 수준은 시대에 따라 달라진다.</li>
+      </ol>
+    </div>
+
+    <!-- 경제성 -->
+    <div class="subsection-title">경제성 (Economy)</div>
+    <div class="hl-box green">
+      <div class="hl-title">경제성이란?</div>
+      <p style="font-size:13.5px;margin-bottom:.7rem;">측정 과정에서 <strong>비용 · 시간 · 장비의 효율성</strong>을 고려하는 것이다. 최소한의 자원으로 필요한 정보를 정확하게 얻는 것이 목표이다.</p>
+      <div class="hl-title">실전 적용</div>
+      <p style="font-size:13.5px;">일반 학교 현장에서는 고가의 실험 장비 대신 <strong>간단한 검사 방법</strong>을 사용하여 여러 항목을 반복적으로 신중하게 측정하는 것이 효과적이고 경제적이다.</p>
+    </div>
+  </section>
+
+  <!-- 5. 핵심 개념 비교표 -->
+  <section class="section" id="compare">
+    <div class="section-title">
+      <span class="icon">5</span>핵심 개념 비교표
+    </div>
+
+    <div class="subsection-title">측정 / 검사 / 평가 비교</div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>구분</th>
+            <th>측정 (Measurement)</th>
+            <th>검사 (Test)</th>
+            <th>평가 (Evaluation)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="label-cell">정의</td>
+            <td>특성을 수치로 표현</td>
+            <td>측정을 위한 절차·도구</td>
+            <td>자료 해석 + 가치 판단</td>
+          </tr>
+          <tr>
+            <td class="label-cell">역할</td>
+            <td>숫자 획득</td>
+            <td>측정 수행 방법 제공</td>
+            <td>의미·판단 부여</td>
+          </tr>
+          <tr>
+            <td class="label-cell">결과 형태</td>
+            <td>숫자 (예: 60 kg)</td>
+            <td>절차·방법 (예: 달리기 검사)</td>
+            <td>판단·등급 (예: 우수/보통)</td>
+          </tr>
+          <tr>
+            <td class="label-cell">순서</td>
+            <td class="accent-cell">①</td>
+            <td class="accent-cell">① (측정의 수단)</td>
+            <td class="accent-cell">② (최종 단계)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="subsection-title" style="margin-top:1.5rem;">타당도 / 신뢰도 / 객관성 비교</div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>구분</th>
+            <th>타당도 (Validity)</th>
+            <th>신뢰도 (Reliability)</th>
+            <th>객관성 (Objectivity)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="label-cell">핵심 질문</td>
+            <td>목적에 맞게 측정하는가?</td>
+            <td>반복해도 같은 값인가?</td>
+            <td>누가 재도 같은 값인가?</td>
+          </tr>
+          <tr>
+            <td class="label-cell">변화 조건</td>
+            <td>측정 도구·방법</td>
+            <td>측정 시기 (반복)</td>
+            <td>측정자 (다른 사람)</td>
+          </tr>
+          <tr>
+            <td class="label-cell">대상</td>
+            <td>동일 대상</td>
+            <td>동일 대상 · 동일 측정자</td>
+            <td>동일 대상 · <span class="kw-red">다른 측정자</span></td>
+          </tr>
+          <tr>
+            <td class="label-cell">측정기구</td>
+            <td>동일</td>
+            <td>동일</td>
+            <td>동일</td>
+          </tr>
+          <tr>
+            <td class="label-cell">예시</td>
+            <td>달리기로 지구력 측정 적합성</td>
+            <td>체중 반복 측정 일관성</td>
+            <td>A·B 측정자 결과 동일성</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="hl-box blue" style="margin-top:.8rem;">
+      <div class="hl-title">신뢰도 vs 객관성 — 딱 하나의 차이</div>
+      <p style="font-size:13.5px;">둘 다 "동일한 결과"를 목표로 하지만, <span class="kw">신뢰도</span>는 <strong>동일 측정자</strong>가 반복 측정할 때의 일관성이고, <span class="kw">객관성</span>은 <strong>다른 측정자</strong>가 측정할 때의 일관성이다. 측정자만 다르다!</p>
+    </div>
+  </section>
+
+  <!-- 6. 측정평가의 역사 -->
+  <section class="section" id="history">
+    <div class="section-title">
+      <span class="icon">6</span>측정평가의 역사 흐름
+    </div>
+    <div class="card">
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-year">1900년경</div>
+          <div class="tl-desc"><strong>인체 형태 측정 연구 시작.</strong> 신체의 외형적 특성(신장, 체중 등)을 수치화하는 연구가 본격화되었다.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">1950년대</div>
+          <div class="tl-desc"><strong>체력 검사 개발.</strong> 단순 형태 측정을 넘어 근력·지구력 등 기능적 체력을 검사하는 방법이 개발되었다.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">1970년대</div>
+          <div class="tl-desc"><strong>검사 점수 평가 연구 발전.</strong> 측정 결과를 어떻게 해석·평가할 것인가에 대한 연구가 활발해졌다.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">이후</div>
+          <div class="tl-desc"><strong>다양한 운동 능력 검사 개발 및 객관적 기준치(규준) 연구.</strong> 개인 능력을 정확히 평가하기 위한 표준화 작업이 지속적으로 이루어졌다.</div>
+        </div>
+      </div>
+    </div>
+    <div class="hl-box yellow" style="margin-top:.5rem;">
+      <div class="hl-title">역사 흐름 요약 (암기 포인트)</div>
+      <p style="font-size:13.5px;"><span class="kw">형태 측정(1900년)→ 체력 검사 개발(1950년대) → 점수 평가 연구(1970년대) → 다양한 검사·규준 연구(이후)</span><br>흐름은 "측정의 대상이 넓어지고, 해석·평가 방법이 정교해진다"는 방향이다.</p>
+    </div>
+  </section>
+
+  <!-- 7. 시험 포인트 -->
+  <section class="section" id="exam">
+    <div class="section-title">
+      <span class="icon">7</span>시험 포인트 정리
+    </div>
+    <div class="exam-grid">
+      <div class="exam-item">
+        <div class="e-q">Q. 측정·검사·평가의 차이는?</div>
+        <div class="e-a">측정 = 수치화 / 검사 = 측정 방법·절차 / 평가 = 해석+가치 판단. 검사는 수단, 측정은 결과, 평가는 판단.</div>
+      </div>
+      <div class="exam-item">
+        <div class="e-q">Q. 측정과 평가의 목적 10가지는?</div>
+        <div class="e-a">동기부여·성취도·향상·진단·처방·점수부여·학습지도 평가·프로그램 평가·분류·예측</div>
+      </div>
+      <div class="exam-item">
+        <div class="e-q">Q. 타당도란?</div>
+        <div class="e-a">측정 도구가 검사 목적과 일치하는 정도. "내가 재려는 것을 실제로 재는가?"</div>
+      </div>
+      <div class="exam-item">
+        <div class="e-q">Q. 신뢰도란?</div>
+        <div class="e-a">동일 조건·동일 측정자가 반복 측정 시 동일한 결과가 나오는 정도. 일관성.</div>
+      </div>
+      <div class="exam-item">
+        <div class="e-q">Q. 객관성이란?</div>
+        <div class="e-a">다른 측정자가 동일 대상을 측정해도 같은 결과가 나오는 정도. 신뢰도와의 차이: 측정자가 달라짐.</div>
+      </div>
+      <div class="exam-item">
+        <div class="e-q">Q. 규준 작성 시 유의사항 3가지는?</div>
+        <div class="e-a">① 광범위한 측정치 기초 ② 규준 대상 범위 제한 적용 ③ 시간·능력 변화에 따라 수정</div>
+      </div>
+      <div class="exam-item">
+        <div class="e-q">Q. 경제성이란?</div>
+        <div class="e-a">비용·시간·장비 효율성 고려. 학교 현장에서는 고가 장비보다 간단한 검사 반복 측정이 효과적.</div>
+      </div>
+      <div class="exam-item">
+        <div class="e-q">Q. 측정평가 역사 흐름은?</div>
+        <div class="e-a">1900년경 인체 형태 → 1950년대 체력 검사 개발 → 1970년대 점수 평가 연구 → 이후 다양한 검사·규준 연구</div>
+      </div>
+      <div class="exam-item">
+        <div class="e-q">Q. 진단과 처방의 차이는?</div>
+        <div class="e-a">진단 = 문제점·약점 파악(현황 분석) / 처방 = 진단 결과 기반 운동 프로그램 설계(해결책 제시)</div>
+      </div>
+      <div class="exam-item">
+        <div class="e-q">Q. 평가가 단순 측정과 다른 이유는?</div>
+        <div class="e-a">평가는 질적 설명 + 양적 분석 + 가치 판단까지 포함. 숫자만 제시하는 측정과 달리 의미와 방향을 제시한다.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. 암기 체크리스트 -->
+  <section class="section" id="checklist">
+    <div class="section-title">
+      <span class="icon">8</span>암기 체크리스트 (시험 직전 확인용)
+    </div>
+    <div class="card">
+      <p style="font-size:13px;color:var(--gray-mid);margin-bottom:.9rem;">아래 항목을 스스로 설명할 수 있으면 체크하세요.</p>
+      <ul class="checklist">
+        <li><input type="checkbox" /><span>측정(Measurement)의 정의와 예시를 말할 수 있다.</span></li>
+        <li><input type="checkbox" /><span>검사(Test)의 정의와 역할을 말할 수 있다.</span></li>
+        <li><input type="checkbox" /><span>평가(Evaluation)의 3가지 포함 요소를 말할 수 있다.</span></li>
+        <li><input type="checkbox" /><span>측정·검사·평가의 관계와 순서를 설명할 수 있다.</span></li>
+        <li><input type="checkbox" /><span>측정과 평가의 목적 10가지를 모두 말할 수 있다.</span></li>
+        <li><input type="checkbox" /><span>타당도의 정의와 예시를 설명할 수 있다.</span></li>
+        <li><input type="checkbox" /><span>신뢰도의 정의와 예시를 설명할 수 있다.</span></li>
+        <li><input type="checkbox" /><span>객관성의 정의와 신뢰도와의 차이를 설명할 수 있다.</span></li>
+        <li><input type="checkbox" /><span>규준의 의미와 작성 시 유의사항 3가지를 말할 수 있다.</span></li>
+        <li><input type="checkbox" /><span>경제성의 의미와 실전 적용 예시를 말할 수 있다.</span></li>
+        <li><input type="checkbox" /><span>측정평가 역사 흐름(1900·1950·1970·이후)을 순서대로 말할 수 있다.</span></li>
+        <li><input type="checkbox" /><span>진단과 처방의 차이를 설명할 수 있다.</span></li>
+        <li><input type="checkbox" /><span>동기부여 목적에서 사용되는 검사 예시를 말할 수 있다.</span></li>
+        <li><input type="checkbox" /><span>예측 목적에서 예측할 수 있는 항목 3가지를 말할 수 있다.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 9. 전체 요약 -->
+  <section class="section" id="summary">
+    <div class="section-title">
+      <span class="icon">9</span>전체 요약
+    </div>
+    <div class="summary-box">
+      <h3>이 범위의 핵심은 무엇인가?</h3>
+      <ul>
+        <li><span class="s-highlight">개념 구분:</span> 측정(수치화) → 검사(방법·도구) → 평가(해석+판단)의 3단계 흐름을 이해한다.</li>
+        <li><span class="s-highlight">목적 10가지:</span> 동기부여·성취도·향상·진단·처방·점수부여·학습지도 평가·프로그램 평가·분류·예측. 명칭과 의미를 쌍으로 암기한다.</li>
+        <li><span class="s-highlight">조건 — 타당도:</span> 검사 목적과의 일치 여부. "재려는 것을 제대로 재는가?"</li>
+        <li><span class="s-highlight">조건 — 신뢰도 vs 객관성:</span> 신뢰도는 동일 측정자 반복 측정, 객관성은 다른 측정자 측정 — 측정자만 다르다.</li>
+        <li><span class="s-highlight">조건 — 규준:</span> 평가 기준 자료. 광범위한 표본·대상 제한 적용·시대에 맞게 수정이 핵심 유의사항.</li>
+        <li><span class="s-highlight">조건 — 경제성:</span> 비용·시간·장비 효율성. 학교 현장에서는 간단한 검사의 반복 측정이 효과적.</li>
+        <li><span class="s-highlight">역사 흐름:</span> 형태(1900) → 체력(1950) → 평가 연구(1970) → 다양화·표준화(이후). 방향성은 "더 넓고 더 정교하게".</li>
+      </ul>
+    </div>
+  </section>
+
+  <hr />
+  <p style="text-align:center;font-size:12px;color:#aaa;">건강체력측정평가 복습 정리노트 · PDF 1~15p 기준 · review-note.html</p>
+
+</div><!-- /wrapper -->
+
+<script>
+  // 체크박스 상태를 localStorage에 저장/복원
+  (function() {
+    const boxes = document.querySelectorAll('.checklist input[type="checkbox"]');
+    boxes.forEach(function(box, i) {
+      const key = 'chk_' + i;
+      box.checked = localStorage.getItem(key) === '1';
+      box.addEventListener('change', function() {
+        localStorage.setItem(key, this.checked ? '1' : '0');
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
